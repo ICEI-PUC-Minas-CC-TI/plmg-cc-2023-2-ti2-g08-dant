@@ -1,18 +1,19 @@
-# [Nome do projeto]
+# [D.A.N.T]
 
 [Escreva um ou dois  parágrafo resumindo o objetivo do seu projeto.]
 
 ## Alunos integrantes da equipe
 
-* D IGAS
-* A SSEMBLYS
-* N AHIM
-* T UPAC
+* Arthur Santos (Tupac)
+* Diego Maia (Digas)
+* Henrique Nahim (Nahim)
+* Luis Lemos (Assemblys)
 
 ## Professores responsáveis
 
-* [Nome completo do professor 1]
-* [Nome completo do professor 2]
+* [Max do Val Machado]
+* [Luciana Mara Freitas Diniz]
+* [Amália Soares Vieira de Vasconcelos]
 
 ## Instruções de utilização
 
