@@ -140,7 +140,7 @@ public class UserDAO extends DAO {
 
         return usuarios;
     }
-    public boolean authentication(String email, String senha) throws SQLException {
+    public int authentication(String email, String senha) throws SQLException {
         senha = Converter.CriptografarMd5(senha);
     
         String sql = "SELECT * FROM usuario WHERE email = ? and senha = ?";
@@ -152,9 +152,9 @@ public class UserDAO extends DAO {
     
         // Verifica se o ResultSet contém alguma linha
         if (resultSet.next()) {
-            return true;  // Usuário encontrado
+            return resultSet.getInt("id");  // Usuário encontrado
         } else {
-            return false; // Usuário não encontrado
+            return 0; // Usuário não encontrado
         }
     }
     

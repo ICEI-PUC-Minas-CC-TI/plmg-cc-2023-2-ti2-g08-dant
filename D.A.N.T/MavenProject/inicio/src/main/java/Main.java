@@ -12,6 +12,7 @@ import com.google.gson.JsonParser;*/
 import java.util.LinkedList;
 import Estruturas.Objetos.*;
 import Estruturas.DAOStruct.*;
+import Service.UserService;
 
 public class Main {
    
@@ -35,10 +36,8 @@ public class Main {
       }); */
 
       UserDAO userdao = new UserDAO();
+      UserService user = new UserService();
       //print os usuarios
-      for(User e : userdao.getAllUsers()){
-         System.out.println(e.getEmail() + " " + e.getSenha() + " \n");
-      }
       System.out.println( "AUTENTICANDO...\n" + userdao.authentication("gaok@gmail.com","Kamado2022"));
    }
 

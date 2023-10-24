@@ -11,12 +11,16 @@
     gap: 20px;
     justify-content: center;
     align-items: center;
-    background-color: lightcoral;
 }
 
 .container-carrosel .imagem-esq{
     width: 50%;
     height: 50vh;
+    transition: .3s;
+}
+
+.container-carrosel .imagem-esq:hover{
+    transform: scale(1.02);
 }
 
 .container-carrosel .imagem-dir{ 
@@ -35,7 +39,7 @@
 }
 
 .container-classificacao .bloco{
-    background-color: lightcyan;
+    background-color: var(--color2);
     padding: 5px;
     border-radius: 5px;
     border: 1px solid black;
@@ -44,11 +48,10 @@
 
 .container-classificacao .bloco h1 a{
     text-decoration: none;
-    color: black;
+    color: var(--color1);
 }
 
 .container-classificacao .bloco:hover{
-    background-color: lightgreen;
     transform: scale(1.05);
 }
 
@@ -68,7 +71,7 @@
 
 .container-overflow .carrosel .text{
     margin-bottom:35px;
-    background-color: lightgray;
+    background-color: var(--color2);
     padding: 5px;
     border: 1px solid black;
     width: 30%;
@@ -94,7 +97,7 @@
 
 .container-overflow .carrosel .container-jogos .jogos .content{
     transition: .10s;
-    background-color: lightblue;
+    background-color: var(--color3);
     padding: 5px;
     border-radius: 10px;
 }
@@ -120,7 +123,8 @@
 }
 
 .button h1{
-    background-color: lightgreen;
+    background-color: var(--color2);
+    border-radius: 5px;
     padding: 10px;
     width: 30%;
     text-align: center;
@@ -160,14 +164,12 @@
     }
 
     .container-navegar{
-        background-color: lightblue;
         display: flex;
         justify-content: space-between;
         margin: 0 0px;
     }
 
     footer{
-        background-color: lightgoldenrodyellow;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -190,8 +192,8 @@
 
 }
 
-
 @media (max-width: 650px) {
+
     .container-jogos .seta-esq, .seta-dir{
         display: none;
     }

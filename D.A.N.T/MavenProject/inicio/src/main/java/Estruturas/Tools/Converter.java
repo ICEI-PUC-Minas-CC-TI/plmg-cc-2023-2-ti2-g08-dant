@@ -4,9 +4,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class Converter {
-    
-
-
     public static String CriptografarMd5(String senha) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");

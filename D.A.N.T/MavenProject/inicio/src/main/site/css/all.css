@@ -5,6 +5,16 @@
     scroll-behavior: smooth;
 }
 
+:root{
+    --color1: rgb(20, 20, 20);
+    --color2: white;
+    --color3: rgb(128, 128, 128);
+}
+
+body{
+    background-color: var(--color3);
+}
+
 /* Chat-bot */
 
 chat-bot{
@@ -19,7 +29,7 @@ chat-bot{
 }
 
 .empilhar {
-    opacity: 1;
+    opacity: 0;
     position: fixed;
     z-index: 10010;
     width: 20px;
@@ -29,7 +39,7 @@ chat-bot{
 }
 
 .empilhar:checked{
-    top: 280px;
+    top: 380px;
 }
 
 .empilhar:checked ~ chat-bot {
@@ -60,6 +70,7 @@ chat-bot i{
     margin: 15px auto;
     overflow-y: scroll;
 }
+
 .container-chat .form input{
     margin: 0 auto;
     border-radius: 5px;
@@ -70,7 +81,7 @@ chat-bot i{
 /* Barra de navegação */
 
 .container-navegar{
-    background-color: lightblue;
+    background-color: var(--color2);
     display: flex;
     justify-content: space-between;
     margin: 0 10px;
@@ -83,17 +94,19 @@ chat-bot i{
 }
 
 .links ul li a{
-    color: black;
+    color: white;
+    font-size: large;
     text-decoration: none;
 }
 
 .container-navegar .direita .profile{
-    background-color: lightcoral;
-    padding: 20px;
+    background-color: var(--color1);
+    padding: 35px;
 }
 
 .container-navegar .direita .profile i{
     cursor: pointer;
+    color: var(--color2);
 }
 
 .container-navegar .direita .profile{
@@ -101,9 +114,17 @@ chat-bot i{
 }
 
 .container-navegar .direita .profile:hover{
-    transform: scale(1.05);
+    transform: scale(0.9);
 }
 
+.container-navegar .esquerda a{
+    display: flex;
+    justify-content: center;
+}
+
+.container-navegar .esquerda a img{ 
+    border-radius: 10px;
+}
 
 /* Esquerda-navegação */
 
@@ -120,15 +141,14 @@ chat-bot i{
 }
 
 .links ul li{
-    background-color: lightgray;
-    padding: 5px;
-    border-radius: 10px;
+    background-color: var(--color1);
+    padding: 30px;
     border: 1px solid black;
     transition: .3s;
 }
 
 .links ul li:hover{
-    transform: scale(1.05);
+    transform: scale(0.9);
 }
 
 /* Hamburger */
@@ -195,12 +215,16 @@ chat-bot i{
 /* Foooter */
 
 footer{
-    background-color: lightgoldenrodyellow;
+    background-color: var(--color2);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
+}
+
+footer .descricao{
+    margin-top: 10px;
 }
 
 footer .descricao{
@@ -217,14 +241,12 @@ footer .descricao{
     }
 
     .container-navegar{
-        background-color: lightblue;
         display: flex;
         justify-content: space-between;
         margin: 0 0px;
     }
 
     footer{
-        background-color: lightgoldenrodyellow;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -243,5 +265,17 @@ footer .descricao{
 
     .container-esq{
         width: 100%;
+    }
+}
+
+@media (max-width: 650px){
+    footer .imagem, .selo{
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 450px){
+    .container-navegar .direita .profile{
+        padding: 20px;
     }
 }

@@ -19,8 +19,6 @@ public class TesteSpark {
                 teste.authentication(user,senha);   
                 return 0;
             });
-            
         });
-
     }
 }

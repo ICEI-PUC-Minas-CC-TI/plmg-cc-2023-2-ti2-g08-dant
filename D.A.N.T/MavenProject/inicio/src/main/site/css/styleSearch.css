@@ -66,7 +66,7 @@
 /* Jogo individual */
 
 .game{
-    background-color: lightgoldenrodyellow;
+    background-color: var(--color2);
     padding: 5px;
     border-radius: 10px;
     width: 15%;
@@ -88,7 +88,7 @@
 }
 
 .mais-itens h2{
-    background-color: lightblue;
+    background-color: var(--color2);
     width: 20%;
     margin: auto;
     border-radius: 10px;
@@ -111,14 +111,12 @@
     }
 
     .container-navegar{
-        background-color: lightblue;
         display: flex;
         justify-content: space-between;
         margin: 0 0px;
     }
 
     footer{
-        background-color: lightgoldenrodyellow;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;

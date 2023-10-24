@@ -158,6 +158,22 @@ function vetor(range, string) {
                 </div>`;
             }
         }
+    } else if(pageTAM >= 1900){
+        for (let i = start; i < (end + 10); i++) {
+            if (i < data.length) {
+                str += `
+                <div class="content">
+                    <div class="game">
+                        <a href="GamePage.html?appid=${data[i].appid}">
+                            <img src="${data[i].imgsrc}" alt="" width="150px" height="200px">
+                            <div class="name">
+                                <h5>${data[i].titulo}</h5>
+                            </div>
+                        </a>
+                    </div>
+                </div>`;
+            }
+        }
     } else {
         for (let i = start; i < data.length && i < 40; i++) {
             str += `
