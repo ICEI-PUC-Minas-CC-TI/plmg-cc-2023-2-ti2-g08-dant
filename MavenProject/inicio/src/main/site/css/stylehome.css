@@ -1,0 +1,270 @@
+/* DIV Nav */
+
+/* Chat-bot */
+
+
+chat-bot{
+    position: fixed;
+    bottom: -255px;
+    right: 0;
+    margin: 10px;
+    z-index: 1000;
+    background-color: aqua;
+    transition: .3s;
+    border-radius: 5px;
+}
+
+.empilhar {
+    opacity: 1;
+    position: fixed;
+    z-index: 10010;
+    width: 20px;
+    height: 20px;
+    bottom: 10px;
+    right: 150px;
+}
+
+.empilhar:checked{
+    top: 280px;
+}
+
+.empilhar:checked ~ chat-bot {
+    bottom: 0;
+}
+
+chat-bot i{
+    cursor: pointer;
+    color: black;
+    transition: .3s;
+    text-align: center;
+    width: 100%;
+}
+
+.container-chat{
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.container-chat .resp{
+    text-align: justify;
+    background-color: var(--color2);
+    width: 300px;
+    font-size: 15px;
+    border-radius: 5%;
+    margin: 15px auto;
+    overflow-y: scroll;
+}
+.container-chat .form input{
+    margin: 0 auto;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+/* Section */
+
+/* Carrosel topo */
+
+.container-carrosel{
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    background-color: lightcoral;
+}
+
+.container-carrosel .imagem-esq{
+    width: 50%;
+    height: 50vh;
+}
+
+.container-carrosel .imagem-dir{ 
+    margin-top: 5px;
+}
+
+/* Kind of games */
+
+.container-classificacao{
+    margin-top: 150px;
+    margin-bottom: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.container-classificacao .bloco{
+    background-color: lightcyan;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+    transition: .3s;
+}
+
+.container-classificacao .bloco h1 a{
+    text-decoration: none;
+    color: black;
+}
+
+.container-classificacao .bloco:hover{
+    background-color: lightgreen;
+    transform: scale(1.05);
+}
+
+/* Carrosel meio */
+
+.container-overflow{
+    margin: 50px 10px;
+}
+
+.container-overflow .carrosel{
+    margin-top: 100px;
+}
+
+.container-jogos .seta-esq, .seta-dir{
+    cursor: pointer;
+}
+
+.container-overflow .carrosel .text{
+    margin-bottom:35px;
+    background-color: lightgray;
+    padding: 5px;
+    border: 1px solid black;
+    width: 30%;
+}
+
+.container-overflow .carrosel .container-jogos{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.container-overflow .carrosel .container-jogos .seta{
+    cursor: pointer;
+}
+
+.container-overflow .carrosel .container-jogos .jogos{
+    display: flex;
+    gap: 20px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+}
+
+.container-overflow .carrosel .container-jogos .jogos .content{
+    transition: .10s;
+    background-color: lightblue;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.container-overflow .carrosel .container-jogos .jogos .content:hover{
+    transform: scale(1.01);
+    padding: 2px;
+}
+
+.container-overflow .carrosel .container-jogos .jogos .content .game a{
+    text-decoration: none;
+    color: black;
+}
+
+
+/* Botões por ai da página */
+
+.button{
+    margin-top: 150px;
+    margin-bottom: 150px;
+    display: flex;
+    justify-content: center;
+}
+
+.button h1{
+    background-color: lightgreen;
+    padding: 10px;
+    width: 30%;
+    text-align: center;
+    transition: .3s;
+}
+
+.button h1:hover{
+    transform: scale(1.05);
+    border-radius: 5px;
+}
+
+.button h1 a{
+    text-decoration: none;
+    color: black;
+}
+
+
+@media (max-width: 800px){
+    .container-carrosel .imagem-dir{ 
+        margin-top: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .container-carrosel .imagem-esq{
+        width: 100%;
+    }
+
+    .hamburguer{
+        display: block;
+    }
+
+    .esquerda .links{
+        display: none;
+    }
+
+    .container-navegar{
+        background-color: lightblue;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 0px;
+    }
+
+    footer{
+        background-color: lightgoldenrodyellow;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    footer .descricao{
+        width: 100%;
+        text-align: center;
+    }
+
+    .container-overflow .carrosel .text{
+        width: 80%;
+    }
+
+    .button h1{
+        width: 80%;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+    .container-jogos .seta-esq, .seta-dir{
+        display: none;
+    }
+
+    .container-overflow .carrosel .container-jogos .jogos{
+        display: flex;
+        gap: 20px;
+        overflow-x: scroll;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+    }
+
+}

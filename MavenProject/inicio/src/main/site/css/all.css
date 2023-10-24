@@ -1,0 +1,185 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* Barra de navegação */
+
+.container-navegar{
+    background-color: lightblue;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px;
+}
+
+.links ul{
+    list-style-type: none;
+    display: flex;
+    gap: 10px;
+}
+
+.links ul li a{
+    color: black;
+    text-decoration: none;
+}
+
+.container-navegar .direita .profile{
+    background-color: lightcoral;
+    padding: 20px;
+}
+
+.container-navegar .direita .profile i{
+    cursor: pointer;
+}
+
+.container-navegar .direita .profile{
+    transition: .3s;
+}
+
+.container-navegar .direita .profile:hover{
+    transform: scale(1.05);
+}
+
+
+/* Esquerda-navegação */
+
+.container-navegar .esquerda{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+}
+
+.container-navegar .esquerda img{
+    display: flex;
+    align-items: center;
+}
+
+.links ul li{
+    background-color: lightgray;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid black;
+    transition: .3s;
+}
+
+.links ul li:hover{
+    transform: scale(1.05);
+}
+
+/* Hamburger */
+
+.hamburguer{
+    display: none;
+    width: 100px;
+}
+
+.hamburguer input{
+    position: absolute;
+    z-index: 100;
+    margin-right: 20px;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.hamburguer i{
+    position: absolute;
+    z-index: 50;
+    font-size: 50px;
+    margin-top: 25px;
+}
+
+.hamburguer ul{
+    background-color: lightgray;
+    position: absolute;
+    transition: .3s;
+    height: 100vw;
+    margin-left: -300px;
+    z-index: 0;
+}
+
+.hamburguer input:checked ~ ul{
+    margin-left: 0px;
+}
+
+.hamburguer ul li{
+    margin: 100px 0px;
+    text-align: center;
+}
+
+.hamburguer ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+
+/* Direita-navegação */
+
+.container-navegar .direita{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.direita .profile img{
+    border-radius: 30px;
+    /* mudar */
+}
+
+/* Foooter */
+
+footer{
+    background-color: lightgoldenrodyellow;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+footer .descricao{
+    width: 50%;
+}
+
+@media (max-width: 800px){
+    .hamburguer{
+        display: block;
+    }
+
+    .esquerda .links{
+        display: none;
+    }
+
+    .container-navegar{
+        background-color: lightblue;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 0px;
+    }
+
+    footer{
+        background-color: lightgoldenrodyellow;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    footer .descricao{
+        width: 100%;
+        text-align: center;
+    }
+
+    .container-dir{
+        width: 100%;
+    }
+
+    .container-esq{
+        width: 100%;
+    }
+}
