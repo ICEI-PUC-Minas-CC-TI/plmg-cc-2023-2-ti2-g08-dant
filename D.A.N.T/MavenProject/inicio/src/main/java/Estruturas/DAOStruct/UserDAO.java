@@ -44,7 +44,6 @@ public class UserDAO extends DAO {
        if( !autenticandoEmail(email)) { return false;} //validando email
        
         try {
-            senha = Converter.CriptografarMd5(senha);
     
             // Converte a data de String para java.util.Date usando SimpleDateFormat
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -141,7 +140,6 @@ public class UserDAO extends DAO {
         return usuarios;
     }
     public int authentication(String email, String senha) throws SQLException {
-        senha = Converter.CriptografarMd5(senha);
     
         String sql = "SELECT * FROM usuario WHERE email = ? and senha = ?";
         PreparedStatement preparedStatement = conexao.prepareStatement(sql);
