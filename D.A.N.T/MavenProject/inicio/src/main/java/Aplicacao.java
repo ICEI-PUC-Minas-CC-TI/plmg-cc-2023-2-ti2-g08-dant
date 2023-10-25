@@ -1,7 +1,5 @@
 import static spark.Spark.*;
 
-import Estruturas.DAOStruct.*;
-
 import Service.UserService;
 
 public class Aplicacao {
