@@ -1,18 +1,27 @@
 import static spark.Spark.*;
 
-import Estruturas.DAOStruct.*;
-
 import Service.UserService;
+
+import com.google.gson.*;
 
 public class Aplicacao {
    
    public static void main(String[] args) throws Exception {
       UserService user = new UserService();
-      path("/HomePage", () -> {
+      
+      path("/Index", () -> {
          post("/login", (req, res) -> {
             int response = user.auth(req,res);
+            return response;  
+         });
+         post("/registro", (req, res) -> {
+            boolean response = user.registro(req, res);
             return response;
          });
+      });
+      
+      path("/HomePage", () -> {
+         
       });
    }
 }

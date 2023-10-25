@@ -20,6 +20,7 @@ public class UserService {
         String senha = req.queryParams("senha");
         String dataNasc = req.queryParams("nasc");
 
+        senha = conv.CriptografarMd5(senha);
 
         try {
             user.inserirUsuario(nome, senha, email, dataNasc);
@@ -33,6 +34,7 @@ public class UserService {
         String email = req.queryParams("email");
         String senha = req.queryParams("senha");
 
+        senha = Converter.CriptografarMd5(senha);
         int id = user.authentication(email, senha);
 
         if (id ==  0) {
