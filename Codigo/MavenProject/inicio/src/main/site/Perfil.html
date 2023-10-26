@@ -4,32 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/perfil.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="css/stylehome.css">
-    <link rel="stylesheet" href="css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/e65e29a543.js" crossorigin="anonymous"></script>
     <link rel="icon" href="content/dant3.png">
-    <title>Home Page</title>
+    <script src="https://kit.fontawesome.com/e65e29a543.js" crossorigin="anonymous"></script>
+    <title>Perfil</title>
 </head>
 
 <body>
-    <input type="checkbox" class="empilhar">
-    <chat-bot>
-        <i class="fa-solid fa-caret-up fa-2xl"></i>
-        <div class="container-chat">
-            <div class="resp">
-                <h5 class="insere"> <!-- Java --> </h5>
-            </div>
-            <div class="form">
-                <label>
-                    <input type="text" class="recebe" placeholder="digite sua pergunta...">
-                    <input type="submit" onclick="sendMessage()">
-                </label>
-            </div>
-        </div>
-    </chat-bot>
     <header>
         <nav>
             <div class="container-navegar">
@@ -65,40 +50,54 @@
         </nav>
     </header>
     <section>
-        <div class="container-carrosel">
-            <div class="imagem-esq">
-                <!-- Parte java -->
-            </div>
-            <div class="imagem-dir">
-                <!-- Parte java -->
-            </div>
-        </div>
-        </div>
-        <div class="container-classificacao" id="container-classificacao">
-            <div class="blocos" id="blocos">
-                <!-- Mais um JavaScript -->
-            </div>
-        </div>
-        <div class="container-overflow">
-            <div class="carrosel" id="carrosel">
-                <div class="text" id="text">
-                    <h1>Lorem ipsum dolor sit amet.</h1>
+        <div class="container-dados">
+            <label>
+                <div class="tudo-esq">
+                    <div class="esq">
+                        <div>
+                            <h3>Nome:</h3>
+                            <input type="text" class="nome" required>
+                        </div>
+                        <div>
+                            <h3>Email:</h3>
+                            <input type="text" class="email" required>
+                        </div>
+                        <div>
+                            <h3>Senha</h3>
+                            <input type="password" class="senha" required>
+                        </div>
+                        <div>
+                            <h3>Confirmar senha</h3>
+                            <input type="password" class="confirmar_senha" required>
+                        </div>
+                        <div>
+                            <h3>Data</h3>
+                            <input type="date" class="date" required>
+                        </div>
+                    </div>
+                    <div class="container-deletar">
+                        <div class="deletar">
+                            <h1>DELETAR</h1>
+                        </div>
+                        <div class="salvar">
+                            <h1>SALVAR</h1>
+                        </div>
+                    </div>
                 </div>
-                <div class="container-jogos">
-                    <div class="seta-esq" id="seta-esq">
-                        <i class="fa-solid fa-arrow-left fa-xl"></i>
+                <div class="dir">
+                    <div>
+                      <label for="image_uploads" class="texto">Insira uma Imagem (PNG, JPG)</label>
+                      <input
+                        type="file"
+                        id="image_uploads"
+                        name="image_uploads"
+                        accept=".jpg, .jpeg, .png"
+                        multiple />
                     </div>
-                    <div class="jogos" id="jogos">
-                        <!-- VAI VIR DO JAVA -->
-                    </div>
-                    <div class="seta-dir" id="seta-dir">
-                        <i class="fa-solid fa-arrow-right fa-xl"></i>
+                    <div class="preview">
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="button">
-            <h1><a href="Search.html">Lorem ipsum dolor sit amet.</a></h1>
+            </label>
         </div>
     </section>
     <footer>
@@ -117,7 +116,6 @@
             <img src="content/dant2.png" alt="" width="100%" height="100%">
         </div>
     </footer>
-    <script src="js/javahome.js"></script>
+    <script src="js/javaPerfil.js"></script>
 </body>
-
 </html>

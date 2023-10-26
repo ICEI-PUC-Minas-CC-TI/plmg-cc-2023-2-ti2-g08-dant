@@ -128,7 +128,7 @@ function criarSubComentario(containerIndex, subComentarios) {
 
 // abrir e fechar comentários
 
-const rosto = document.querySelector(".forum i");
+const rosto = document.querySelector(".forum");
 const seta = document.querySelector(".container-seu-comentario");
 let contador = 0;
 
