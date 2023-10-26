@@ -15,7 +15,7 @@ public class Aplicacao {
       GamesService game = new GamesService();
       
 
-      // port(4000); TA DANDO ERRO TUPACAO
+      port(4567);
       path("/Index", () -> {
          post("/login", (req, res) -> {
             int response = user.auth(req, res);
