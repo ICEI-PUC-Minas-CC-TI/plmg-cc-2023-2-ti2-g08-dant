@@ -16,6 +16,8 @@ public class GamesService {
 
         LinkedList<Game> gamearr = new LinkedList<>();
 
+        gamearr = game.GetAllGames();
+
         return gson.toJson(gamearr);
     }
 }
