@@ -61,5 +61,11 @@ function Cadastrar (){
     else{
         alert("Preencha todos os dados");
     }
-
+    
 }
+
+fetch("localhost:4000/Index/login?email=adm%40gmail.com&senha=1234")
+.then(res => res.json())
+.then(res => {
+    console.log(res);
+})
