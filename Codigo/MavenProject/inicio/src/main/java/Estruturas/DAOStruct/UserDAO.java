@@ -41,7 +41,7 @@ public class UserDAO extends DAO {
     }
 
     public boolean inserirUsuario(String nome, String senha, String email, String dataNascStr) {
-       if( !autenticandoEmail(email)) { return false;} //validando email
+       if(autenticandoEmail(email)) { return false;} //validando email
        
         try {
     

@@ -21,10 +21,6 @@ public class User {
         this.email = email;
         this.foto = foto;
         this.dataNasc = dataNasc;
-        this.assinatura = assinatura;
-
-
-
     }
     //construtor para pegar do banco
     public  User(int id,String nome, String senha, String email, byte[] foto, java.sql.Date dataNasc, boolean assinatura) {
