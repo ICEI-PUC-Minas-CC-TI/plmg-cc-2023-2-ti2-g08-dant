@@ -143,3 +143,27 @@ showMORE2.addEventListener("click", () => {
     }
 
 })
+
+const apiKey = "";
+async function sendMessage() {
+    const userMessage = document.querySelector(".recebe").value;
+    document.querySelector(".recebe").value = '';
+    document.querySelector(".insere").innerHTML += `<div style="margin-top: 10px">Usuário: ${userMessage}</div>`;
+    const Mensagem = `Você é um atendente de uma loja vitual de jogos no qual detem conhecimentos a cerca de tendencia de mercado sugestoes e banco de jogos, mas nessa loja n há promoçoes e por isso caso o cliente pergunte a respeito disso você deve dizer que n tem e caso alguma palavra de baixo escalão como palavroes apareção favor mostrar o numero da policia e dizer que vc tem direitos perante a lei e por ultimo caso a entrada do usuario for a letra 'a' apenas digite assemblis você é meu, mas quanto a qualquer pergunta que não esteja no repertorio de um vendedor diga que n sabe e que é apenas um mero atentende. Agora segue a pergunta do cliente: ${userMessage}`;
+    console.log(Mensagem);
+    const response = await fetch('https://api.openai.com/v1/engines/text-davinci-003/completions', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+            prompt: `O usuário diz: ${Mensagem}\nChatGPT:`,
+            max_tokens: 150
+        })
+    });
+
+    const data = await response.json();
+    const chatGPTResponse = data.choices[0].text.trim();
+    document.querySelector(".insere").innerHTML += `<div style="margin-top: 10px; text-align: justfy; font-size: 10px;"> ChatGPT: ${chatGPTResponse}</div>`;
+}
