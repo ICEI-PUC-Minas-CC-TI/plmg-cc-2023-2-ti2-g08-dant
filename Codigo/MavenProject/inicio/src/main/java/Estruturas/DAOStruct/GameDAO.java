@@ -39,7 +39,7 @@ public class GameDAO extends DAO {
     }
 
     public Game getGameByID(int appid) {
-         Game game = null;
+        Game game = null;
         if (appid >= 0) {
            
             String sql = "SELECT * FROM games WHERE appid = ?";
