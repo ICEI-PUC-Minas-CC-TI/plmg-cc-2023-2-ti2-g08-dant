@@ -1,22 +1,21 @@
 package Service;
 
-
 import Estruturas.DAOStruct.GameDAO;
 
 import Estruturas.Objetos.Game;
 
 import java.util.LinkedList;
 
+import com.google.gson.Gson;
+
 public class GamesService {
-    public Game[] getGames() throws Exception{
+    public String getGames() throws Exception{
+        Gson gson = new Gson();
+
         GameDAO game = new GameDAO();
 
         LinkedList<Game> gamearr = new LinkedList<>();
 
-        gamearr = game.GetAllGames();
-
-        Game[] allGames = (Game[]) gamearr.toArray();
-
-        return allGames;
+        return gson.toJson(gamearr);
     }
 }
