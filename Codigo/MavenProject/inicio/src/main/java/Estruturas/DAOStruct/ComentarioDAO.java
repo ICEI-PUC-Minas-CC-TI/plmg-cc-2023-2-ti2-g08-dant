@@ -11,8 +11,8 @@ public class ComentarioDAO extends DAO {
         super();
     }
 
-    public boolean InserirComentario(String comentario, int postID, int userID, java.sql.Date data) throws Exception {
-        String sql = "INSERT INTO comentarios (coment,postid,userid,datapostagem) VALUES (,?,?,?,?)";
+    public boolean InserirComentario(String comentario,java.sql.Date data, int postID, int userID) throws Exception {
+        String sql = "INSERT INTO comentario (coment,datapostagem,postid,userid) VALUES (,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = conexao.prepareStatement(sql);
 
