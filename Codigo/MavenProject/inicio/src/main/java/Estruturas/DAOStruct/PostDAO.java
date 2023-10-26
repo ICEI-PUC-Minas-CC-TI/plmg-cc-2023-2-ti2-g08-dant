@@ -18,6 +18,8 @@ public class PostDAO extends DAO {
     // as colunas em post se chamam id,postagem,forumID,UserID,categoria
 
     public boolean InserirPostagem(String postagem, int forumID, int UserID, int categoria) {
+        if(categoria > 3 && categoria < 1){ return false;}
+        
         String sql = "INSERT INTO posts (postagem,forumID,UserID,categoria) VALUES (?,?,?,?)";
         try {
             PreparedStatement preparedStatement = conexao.prepareStatement(sql);

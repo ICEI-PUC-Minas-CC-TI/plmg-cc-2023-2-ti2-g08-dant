@@ -67,7 +67,6 @@ public class UserDAO extends DAO {
             return true;
         } catch (SQLException | ParseException e) {
             e.printStackTrace();
-            // Trate a exceção aqui, registre-a ou retorne um valor de erro adequado
             return false;
         }
     }
@@ -139,6 +138,7 @@ public class UserDAO extends DAO {
 
         return usuarios;
     }
+
     public int authentication(String email, String senha) throws SQLException {
     
         String sql = "SELECT * FROM usuario WHERE email = ? and senha = ?";
