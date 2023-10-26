@@ -1,16 +1,21 @@
 import static spark.Spark.*;
 
-import Service.UserService;
+import Service.*;
+
 
 import com.google.gson.*;
+
 
 public class Aplicacao {
 
    public static void main(String[] args) throws Exception {
       UserService user = new UserService();
+      GamesService game = new GamesService();
+      
+
       // port(4000); TA DANDO ERRO TUPACAO
       path("/Index", () -> {
-         get("/login", (req, res) -> {
+         post("/login", (req, res) -> {
             int response = user.auth(req, res);
             return response;
          });
@@ -21,6 +26,12 @@ public class Aplicacao {
       });
 
       path("/HomePage", () -> {
+         post("/", (req, res) -> {
+            Gson gson = new Gson();
+            String response = gson.toJson(game.carrossel());
+            return response;
+         });
+
 
       });
    }
