@@ -5,6 +5,8 @@ import Service.*;
 
 import com.google.gson.*;
 
+import Estruturas.Objetos.Game;
+
 
 public class Aplicacao {
 
@@ -27,12 +29,9 @@ public class Aplicacao {
 
       path("/HomePage", () -> {
          post("/", (req, res) -> {
-            Gson gson = new Gson();
-            String response = gson.toJson(game.carrossel());
+            Game [] response = game.carrossel();
             return response;
          });
-
-
       });
    }
 }
