@@ -19,7 +19,6 @@ public class DAO {
         String mydatabase = "dant";
         int porta = 5432;
         String url = "jdbc:postgresql://" + serverName + ":" + porta + "/" + mydatabase;
-        System.out.println(url);
         String username = "admdant@dantdb";
         String password = "Dant2004";
         boolean status = false;

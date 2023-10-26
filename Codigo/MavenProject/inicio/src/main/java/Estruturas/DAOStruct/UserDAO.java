@@ -72,7 +72,6 @@ public class UserDAO extends DAO {
     }
     
 
-  
 
     public boolean deleteUserByID(int id){
 
@@ -152,7 +151,7 @@ public class UserDAO extends DAO {
         if (resultSet.next()) {
             return resultSet.getInt("id");  // Usuário encontrado
         } else {
-            return 0; // Usuário não encontrado
+            return -1; // Usuário não encontrado
         }
     }
     

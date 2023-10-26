@@ -33,8 +33,8 @@ public class UserService {
         senha = Converter.CriptografarMd5(senha);
         int id = user.authentication(email, senha);
 
-        if (id == 0) {
-            return 0;
+        if (id == -1) {
+            return -1;
             // retorna 0 se o usuario não for encontrado no BD
         } else {
             return id;
