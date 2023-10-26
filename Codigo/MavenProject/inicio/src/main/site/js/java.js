@@ -64,7 +64,7 @@ function Cadastrar (){
     
 }
 
-const url = 'http://localhost:4567/Index/registro';
+const url = 'http://localhost:4567/Index/registro?nome=Gabriel&email=alguem@gmail.com&senha=elememo&nasc=2010-10-10';
 const data = {
     nome: 'Arthur',
     email: 'algo@gmail.com',
