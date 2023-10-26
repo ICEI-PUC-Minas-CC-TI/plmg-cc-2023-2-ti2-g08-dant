@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/e65e29a543.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/styleGamePage.css">
     <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/perfil.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap" rel="stylesheet">
     <link rel="icon" href="content/dant3.png">
-    <title>Titulo do Jogo</title>
+    <script src="https://kit.fontawesome.com/e65e29a543.js" crossorigin="anonymous"></script>
+    <title>Perfil</title>
 </head>
+
 <body>
     <header>
         <nav>
@@ -48,71 +50,58 @@
         </nav>
     </header>
     <section>
-        <div class="forum">
-            <i class="fa-brands fa-wpforms fa-2xl"></i><span>FORUM</span>
-        </div>
         <div class="container-dados">
-            <div class="container-cima">
-                <div class="container-esq">
-                    <div class="texto">
-                        <h1>Lorem ipsum dolor sit amet.</h1>
-                    </div>
-                    <div class="imagens">
-                        <div class="cima">
-                            
+            <label>
+                <div class="tudo-esq">
+                    <div class="esq">
+                        <div>
+                            <h3>Nome:</h3>
+                            <input type="text" class="nome" required>
                         </div>
-                        <div class="baixo">
-                            
+                        <div>
+                            <h3>Email:</h3>
+                            <input type="text" class="email" required>
+                        </div>
+                        <div>
+                            <h3>Senha</h3>
+                            <input type="password" class="senha" required>
+                        </div>
+                        <div>
+                            <h3>Confirmar senha</h3>
+                            <input type="password" class="confirmar_senha" required>
+                        </div>
+                        <div>
+                            <h3>Data</h3>
+                            <input type="date" class="date" required>
+                        </div>
+                    </div>
+                    <div class="container-deletar">
+                        <div class="deletar">
+                            <h1>DELETAR</h1>
+                        </div>
+                        <div class="salvar">
+                            <h1>SALVAR</h1>
                         </div>
                     </div>
                 </div>
-                <div class="container-dir">
-                    <div class="descricao">
-                        <h3>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur, excepturi harum
-                            maxime esse illo sequi fugit consequuntur tempora! Vitae, aliquid.</h3>
-                        <h1>Algo mais</h1>
+                <div class="dir">
+                    <div>
+                      <label for="image_uploads" class="texto">Insira uma Imagem (PNG, JPG)</label>
+                      <input
+                        type="file"
+                        id="image_uploads"
+                        name="image_uploads"
+                        accept=".jpg, .jpeg, .png"
+                        multiple />
                     </div>
-                    <div class="preco">
-                        <h5>PReco XXXXX em <span>X</span> e <span>X</span></h5>
+                    <div class="preview">
                     </div>
                 </div>
-            </div>
-            <div class="container-baixo">
-                <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt repellat atque molestiae
-                    accusantium nostrum cum iure, rerum et dolores error.</h3>
-            </div>
-        </div>
-        <div class="container-seu-comentario">
-            <div class="seta">
-                <i class="fa-solid fa-right-long fa-2xl"></i>
-            </div>
-            <input type="checkbox" class="fake-2">
-            <div class="label">
-                <label>
-                    <textarea style="resize: none;">Insira seu comentário</textarea>
-                    <input type="submit" value="Submit">
-                </label>
-            </div>
-        </div>
-        <div class="container-tudo-forum">
-            <div class="navegador-forum">
-                <div class="button number-1">
-                    <h1>Genero</h1>
-                </div>
-                <div class="button number-2">
-                    <h1>Genero</h1>
-                </div>
-                <div class="button number-2">
-                    <h1>Genero</h1>
-                </div>
-            </div>
-            <div class="container-forum">
-                <!-- Java Script puro -->
-            </div>
+            </label>
         </div>
     </section>
     <footer>
-        <div class="imagem">    
+        <div class="imagem">
             <img src="content/dant1.png" alt="" width="100%" height="100%">
         </div>
         <div class="descricao">
@@ -133,6 +122,6 @@
             <img src="content/dant2.png" alt="" width="100%" height="100%">
         </div>
     </footer>
-    <script src="js/javaGamePage.js"></script>
+    <script src="js/javaPerfil.js"></script>
 </body>
 </html>

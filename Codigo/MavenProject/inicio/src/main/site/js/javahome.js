@@ -27,10 +27,10 @@ for (let i = 0; i < 5; i++) {
 imagemESQ.innerHTML = `<a href = "GamePage.html?id=${imagemContainer[0].appid}"><img src="${imagemContainer[0].src}" id="card-prymario" width="100%" height="100%"></a>`
 
 for (let i = 1; i <= 4; i++) {
-    imagemSTR+= `<a href"GamePage.html${imagemContainer[i].appid}"><div class = "card"><img src="${imagemContainer[i].src}" id="card-1" width="200px" height="100px" onclick="MudarCard(this)"> </div>`
+    imagemSTR += `<a href"GamePage.html${imagemContainer[i].appid}"><div class = "card"><img src="${imagemContainer[i].src}" id="card-1" width="200px" height="100px" onclick="MudarCard(this)"> </div>`
 }
 
-imagensDIR.innerHTML = imagemSTR; 
+imagensDIR.innerHTML = imagemSTR;
 
 // Barra de Categorias
 
@@ -74,8 +74,8 @@ const container_overflow = document.querySelector(".container-overflow");
 let testando = "";
 
 for (let i = 0; i < 3; i++) {
-    testando += 
-    `<div class="carrosel" id="carrosel-${i}">
+    testando +=
+        `<div class="carrosel" id="carrosel-${i}">
     <div class="text" id="text">
         <h1>${vetorClasse[i].categoria}</h1>
     </div>
@@ -98,7 +98,7 @@ container_overflow.innerHTML = testando;
 
 completar();
 
-function completar (){
+function completar() {
     const jogos_0 = document.getElementById('jogos-0');
     const jogos_1 = document.getElementById('jogos-1');
     const jogos_2 = document.getElementById('jogos-2');
@@ -114,7 +114,7 @@ function completar (){
     aux = "";
 }
 
-function criarJogos (data){
+function criarJogos(data) {
     let element = "";
     for (let i = 0; i < 7; i++) {
         element += `
@@ -158,7 +158,7 @@ function vetor(range, string) {
                 </div>`;
             }
         }
-    } else if(pageTAM >= 1900){
+    } else if (pageTAM >= 1900) {
         for (let i = start; i < (end + 10); i++) {
             if (i < data.length) {
                 str += `
@@ -244,26 +244,26 @@ seta_dir.forEach((dir, index) => {
         }
     });
 });
-        const apiKey = "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";
-        async function sendMessage() {
-            const userMessage = document.querySelector(".recebe").value;
-            document.querySelector(".recebe").value = '';
-            document.querySelector(".insere").innerHTML += `<div style="margin-top: 10px">Usuário: ${userMessage}</div>`;
-            const Mensagem = `Você é um atendente de uma loja vitual de jogos no qual detem conhecimentos a cerca de tendencia de mercado sugestoes e banco de jogos, mas nessa loja n há promoçoes e por isso caso o cliente pergunte a respeito disso você deve dizer que n tem e caso alguma palavra de baixo escalão como palavroes apareção favor mostrar o numero da policia e dizer que vc tem direitos perante a lei e por ultimo caso a entrada do usuario for a letra 'a' apenas digite assemblis você é meu, mas quanto a qualquer pergunta que não esteja no repertorio de um vendedor diga que n sabe e que é apenas um mero atentende. Agora segue a pergunta do cliente: ${userMessage}`;
-            console.log(Mensagem);
-            const response = await fetch('https://api.openai.com/v1/engines/text-davinci-003/completions', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${apiKey}`
-                },
-                body: JSON.stringify({
-                    prompt: `O usuário diz: ${Mensagem}\nChatGPT:`,
-                    max_tokens: 150
-                })
-            });
+const apiKey = "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";
+async function sendMessage() {
+    const userMessage = document.querySelector(".recebe").value;
+    document.querySelector(".recebe").value = '';
+    document.querySelector(".insere").innerHTML += `<div style="margin-top: 10px">Usuário: ${userMessage}</div>`;
+    const Mensagem = `Você é um atendente de uma loja vitual de jogos no qual detem conhecimentos a cerca de tendencia de mercado sugestoes e banco de jogos, mas nessa loja n há promoçoes e por isso caso o cliente pergunte a respeito disso você deve dizer que n tem e caso alguma palavra de baixo escalão como palavroes apareção favor mostrar o numero da policia e dizer que vc tem direitos perante a lei e por ultimo caso a entrada do usuario for a letra 'a' apenas digite assemblis você é meu, mas quanto a qualquer pergunta que não esteja no repertorio de um vendedor diga que n sabe e que é apenas um mero atentende. Agora segue a pergunta do cliente: ${userMessage}`;
+    console.log(Mensagem);
+    const response = await fetch('https://api.openai.com/v1/engines/text-davinci-003/completions', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+            prompt: `O usuário diz: ${Mensagem}\nChatGPT:`,
+            max_tokens: 150
+        })
+    });
 
-            const data = await response.json();
-            const chatGPTResponse = data.choices[0].text.trim();
-            document.querySelector(".insere").innerHTML += `<div style="margin-top: 10px; text-align: justfy; font-size: 10px;"> ChatGPT: ${chatGPTResponse}</div>`;
-        }
+    const data = await response.json();
+    const chatGPTResponse = data.choices[0].text.trim();
+    document.querySelector(".insere").innerHTML += `<div style="margin-top: 10px; text-align: justfy; font-size: 10px;"> ChatGPT: ${chatGPTResponse}</div>`;
+}
