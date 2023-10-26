@@ -64,7 +64,7 @@ function Cadastrar (){
     
 }
 
-const url = 'http://localhost:4567/Index/registro';
+const url = 'http://localhost:4567/HomePage/';
 const data = {
     nome: 'Arthur',
     email: 'algo@gmail.com',
@@ -73,7 +73,7 @@ const data = {
 };
 
 fetch(url, {
-    method: 'POST',
+    method: 'GET',
     headers: {
         'Content-Type': 'application/json'
     },
@@ -86,7 +86,7 @@ fetch(url, {
     }
 })
 .then(data => {
-    console.log('Resposta do servidor:', data);
+    console.log('Resposta do servidor:', data[0]);
 })
 .catch(error => {
     console.error('Erro:', error);
