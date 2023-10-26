@@ -8,9 +8,9 @@ public class Aplicacao {
    
    public static void main(String[] args) throws Exception {
       UserService user = new UserService();
-      
+      port(4000);
       path("/Index", () -> {
-         post("/login", (req, res) -> {
+         get("/login", (req, res) -> {
             int response = user.auth(req,res);
             return response;  
          });
