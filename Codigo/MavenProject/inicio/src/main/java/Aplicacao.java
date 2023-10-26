@@ -13,10 +13,7 @@ public class Aplicacao {
 
       port(4567);
       path("/Index", () -> {
-         post("/login", (req, res) -> {
-            int response = user.auth(req, res);
-            return response;
-         });
+         get("/login", (req, res) -> user.auth(req, res));
          post("/registro", (req, res) -> {
             boolean response = user.registro(req, res);
             return response;
@@ -24,10 +21,7 @@ public class Aplicacao {
       });
 
       path("/HomePage", () -> {
-         post("/", (req, res) -> {
-            Game [] response = game.getGames();
-            return response;
-         });
+         get("/", (req, res) -> game.getGames());
       });
    }
 }
