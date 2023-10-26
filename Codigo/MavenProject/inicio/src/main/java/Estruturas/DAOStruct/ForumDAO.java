@@ -14,7 +14,7 @@ public class ForumDAO extends DAO {
 
     public boolean insertForum(int gameid, String nome ){
   
-        String sql = "INSET INTO forum (appid,nome) VALUES (?,?)";
+        String sql = "INSERT INTO forum (jogos_appid,nome) VALUES (?,?)";
         try{PreparedStatement  preparedStatement = conexao.prepareStatement(sql);
         preparedStatement.setInt(1, gameid);
         preparedStatement.setString(2, nome);

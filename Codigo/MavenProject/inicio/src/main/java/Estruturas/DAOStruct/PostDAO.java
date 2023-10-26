@@ -20,7 +20,7 @@ public class PostDAO extends DAO {
     public boolean InserirPostagem(String postagem, int forumID, int UserID, int categoria) {
         if(categoria > 3 && categoria < 1){ return false;}
         
-        String sql = "INSERT INTO posts (postagem,forumID,UserID,categoria) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO posts (postagem,forum_id,User_id,categoria_id) VALUES (?,?,?,?)";
         try {
             PreparedStatement preparedStatement = conexao.prepareStatement(sql);
             
@@ -61,9 +61,9 @@ public class PostDAO extends DAO {
             if (resultSet.next()) {
                 int idPost = resultSet.getInt("id");
                 String postagem = resultSet.getString("postagem");
-                int forumID = resultSet.getInt("forumID");
-                int UserID = resultSet.getInt("UserID");
-                int categoria = resultSet.getInt("categoria");
+                int forumID = resultSet.getInt("forum_id");
+                int UserID = resultSet.getInt("user_Id");
+                int categoria = resultSet.getInt("categoria_id");
                 post = new Post(idPost, postagem, forumID, UserID, categoria);
                 return post;
             } else {
@@ -83,15 +83,15 @@ public class PostDAO extends DAO {
                                                       // possibilita usar ands e ors
         // Construa a consulta dinamicamente com base nos parâmetros fornecidos
         if (forumIdP > 0) {
-            sql += " AND ForumID = " + forumIdP;
+            sql += " AND forum_id = " + forumIdP;
         }
 
         if (userIDP > 0) {
-            sql += " AND UsuarioID = " + userIDP;
+            sql += " AND user_id = " + userIDP;
         }
 
         if (categoriaP > 0) {
-            sql += " AND categoria = " + categoriaP;
+            sql += " AND categoria_id = " + categoriaP;
         }
 
         try {
@@ -101,9 +101,9 @@ public class PostDAO extends DAO {
             while (resultSet.next()) {
                 int idPost = resultSet.getInt("id");
                 String postagem = resultSet.getString("postagem");
-                int forumID = resultSet.getInt("ForumID");
-                int UserID = resultSet.getInt("UsuarioID");
-                int categoria = resultSet.getInt("categoria");
+                int forumID = resultSet.getInt("forum_id");
+                int UserID = resultSet.getInt("user_id");
+                int categoria = resultSet.getInt("categoria_id");
                 Post post = new Post(idPost, postagem, forumID, UserID, categoria);
                 posts.add(post);
             }
@@ -126,15 +126,15 @@ public class PostDAO extends DAO {
 
         // Construa a consulta dinamicamente com base nos parâmetros fornecidos
         if (forumIdP > 0) {
-            sql += " AND ForumID = " + forumIdP;
+            sql += " AND forum_Id = " + forumIdP;
         }
 
         if (userIDP > 0) {
-            sql += " AND UsuarioID = " + userIDP;
+            sql += " AND user_id = " + userIDP;
         }
 
         if (categoriaP > 0) {
-            sql += " AND categoria = " + categoriaP;
+            sql += " AND categoria_id = " + categoriaP;
         }
 
         try {
