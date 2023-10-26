@@ -11,17 +11,17 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.ArrayList;
 
 public class GamesService {
-    public Gson carrossel (){
+    public Game[] carrossel (){
         Gson gson = new Gson();
         GameDAO game = new GameDAO();
+        String json = "";
 
-        ArrayList <Game> arr = new ArrayList<>();
+        Game[] gamearr = new Game [5];
 
-        for (int i = 0; i < 5; i++) {
-            int randomID = ThreadLocalRandom.current().nextInt(10, 3901);
-            arr.add(game.getGameByID(randomID));
+        for (int i = 10, j = 0; i < 60; i+=10, j++) {
+            gamearr[j] = (game.getGameByID(i));
         }
-        gson.toJson(arr);
-        return gson;
+
+        return gamearr;
     }
 }
