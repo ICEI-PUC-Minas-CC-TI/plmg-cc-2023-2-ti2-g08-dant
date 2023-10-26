@@ -86,7 +86,7 @@ fetch(url, {
     }
 })
 .then(data => {
-    console.log('Resposta do servidor:', data);
+    console.log('Resposta do servidor:', data[0]);
 })
 .catch(error => {
     console.error('Erro:', error);
