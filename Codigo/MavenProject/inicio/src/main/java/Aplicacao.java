@@ -29,7 +29,7 @@ public class Aplicacao {
 
       path("/HomePage", () -> {
          post("/", (req, res) -> {
-            Game [] response = game.carrossel();
+            Game [] response = game.getGames();
             return response;
          });
       });

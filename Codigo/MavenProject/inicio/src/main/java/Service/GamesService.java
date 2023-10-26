@@ -9,19 +9,20 @@ import Estruturas.Objetos.Game;
 import java.util.concurrent.ThreadLocalRandom;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class GamesService {
-    public Game[] carrossel (){
+    public Game[] getGames() throws Exception{
         Gson gson = new Gson();
         GameDAO game = new GameDAO();
         String json = "";
 
-        Game[] gamearr = new Game [5];
+        LinkedList<Game> gamearr = new LinkedList<>();
 
-        for (int i = 10, j = 0; i < 60; i+=10, j++) {
-            gamearr[j] = (game.getGameByID(i));
-        }
+        gamearr = game.GetAllGames();
 
-        return gamearr;
+        Game[] allGames = (Game[]) gamearr.toArray();
+
+        return allGames;
     }
 }
