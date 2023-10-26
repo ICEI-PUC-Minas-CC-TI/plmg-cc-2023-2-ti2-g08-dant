@@ -2,11 +2,7 @@ import static spark.Spark.*;
 
 import Service.*;
 
-
-import com.google.gson.*;
-
 import Estruturas.Objetos.Game;
-
 
 public class Aplicacao {
 
