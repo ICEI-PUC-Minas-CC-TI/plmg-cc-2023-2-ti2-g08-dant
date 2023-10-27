@@ -40,7 +40,7 @@ chat-bot{
 }
 
 .empilhar:checked{
-    top: 380px;
+    top: 470px;
 }
 
 .empilhar:checked ~ chat-bot {
