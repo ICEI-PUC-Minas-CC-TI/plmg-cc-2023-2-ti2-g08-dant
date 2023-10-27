@@ -41,7 +41,7 @@ public class UserDAO extends DAO {
     }
 
     public boolean inserirUsuario(String nome, String senha, String email, String dataNascStr) {
-       if( !autenticandoEmail(email)) { return false;} //validando email
+       if(autenticandoEmail(email)) { return false;} //validando email
        
         try {
     
@@ -67,13 +67,11 @@ public class UserDAO extends DAO {
             return true;
         } catch (SQLException | ParseException e) {
             e.printStackTrace();
-            // Trate a exceção aqui, registre-a ou retorne um valor de erro adequado
             return false;
         }
     }
     
 
-  
 
     public boolean deleteUserByID(int id){
 
@@ -139,6 +137,7 @@ public class UserDAO extends DAO {
 
         return usuarios;
     }
+
     public int authentication(String email, String senha) throws SQLException {
     
         String sql = "SELECT * FROM usuario WHERE email = ? and senha = ?";
@@ -152,7 +151,7 @@ public class UserDAO extends DAO {
         if (resultSet.next()) {
             return resultSet.getInt("id");  // Usuário encontrado
         } else {
-            return 0; // Usuário não encontrado
+            return -1; // Usuário não encontrado
         }
     }
     

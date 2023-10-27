@@ -16,8 +16,8 @@ public class SubComentDAO extends DAO{
         preparedStatement.setString(1, sc.getConteudo());
         preparedStatement.setInt(2, sc.getComentId());
         preparedStatement.executeUpdate();
-
    }
+
 
    public Boolean editSubcoment(String newsubcoment, int id){
     String sql = "update subcoment set conteudo = ? where id = ?";

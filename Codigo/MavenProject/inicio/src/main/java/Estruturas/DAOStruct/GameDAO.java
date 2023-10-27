@@ -38,10 +38,13 @@ public class GameDAO extends DAO {
         }
     }
 
+
+
+
     public Game getGameByID(int appid) {
-         Game game = null;
+        Game game = null;
         if (appid >= 0) {
-           
+
             String sql = "SELECT * FROM games WHERE appid = ?";
 
             try (PreparedStatement preparedStatement = conexao.prepareStatement(sql)) {
@@ -62,27 +65,41 @@ public class GameDAO extends DAO {
                 throw new RuntimeException("Erro ao buscar o jogo por appid", e);
             }
 
-           
         }
-    return game;
+        return game;
     }
 
     public LinkedList<Game> GetAllGames() throws Exception {
         LinkedList<Game> games = new LinkedList<Game>();
 
-        String sql = "SELECT * FROM games where appid > 38926 ORDER BY appid;";
+        String sql = "SELECT * FROM games where appid > 0 ORDER BY appid;";
 
         PreparedStatement preparedStatement = conexao.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
 
         while (resultSet.next()) {
             games.add(new Game(resultSet.getInt("appid"), resultSet.getString("nome"), resultSet.getString("json")));
-
         }
 
         return games;
 
     }
+
+    public LinkedList<Game> GetAllGamesJson() throws Exception {
+        LinkedList<Game> games = new LinkedList<Game>();
+
+        String sql = "SELECT json FROM games ORDER BY appid;";
+
+        PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            games.add(new Game(resultSet.getInt("appid"), resultSet.getString("nome"), resultSet.getString("json")));
+        }
+
+        return games;   
+    }
+    
 
     public void InsertJson(int appid, String json) {
         String sql = "UPDATE games SET json = ? WHERE appid = ?";
@@ -97,20 +114,65 @@ public class GameDAO extends DAO {
         }
     }
 
-     public LinkedList<Game> getGamesByGenero(String genero) throws Exception {
+    public LinkedList<Game> getGamesByGenero(String genero) throws Exception {
         LinkedList<Game> games = new LinkedList<Game>();
 
-        String sql = "SELECT * FROM games where json like '%" +genero+"%' ORDER BY appid;";
+        String sql = "SELECT * FROM games where json like '%" + genero + "%' ORDER BY appid;";
 
         PreparedStatement preparedStatement = conexao.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
 
         while (resultSet.next()) {
             games.add(new Game(resultSet.getInt("appid"), resultSet.getString("nome"), resultSet.getString("json")));
-            
+
         }
 
         return games;
-
     }
+
+    public LinkedList<Game> getGamesBy(String genero, boolean free, String nome) {
+        LinkedList<Game> games = new LinkedList<Game>();
+        String sql = "SELECT * FROM GAMES WHERE 1=1 ";
+
+        if (genero != null || genero != "") {
+            sql += "AND json like '%" + genero + "%' ";
+        }
+        if (free) {
+            sql += "AND NOT  json like '%price%'";
+        }
+        if (nome != null || nome != "") {
+            sql += "AND nome like '%" + nome + "%' ";
+        }
+
+        sql += "ORDER BY appid;";
+        try (PreparedStatement preparedStatement = conexao.prepareStatement(sql)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                games.add(
+                        new Game(resultSet.getInt("appid"), resultSet.getString("nome"), resultSet.getString("json")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Erro ao buscar o jogo por appid", e);
+        }
+        return games;
+    }
+
+    public LinkedList<Game> GetAllGamesJson() throws Exception {
+        LinkedList<Game> games = new LinkedList<Game>();
+
+        String sql = "SELECT json FROM games ORDER BY appid;";
+
+        PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            games.add(new Game(resultSet.getInt("appid"), resultSet.getString("nome"), resultSet.getString("json")));
+        }
+
+        return games;
+    }
+
+    // fazer função para pesquisar por nome, preço, genero;
+
 }
