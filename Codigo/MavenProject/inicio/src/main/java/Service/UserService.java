@@ -4,6 +4,8 @@ import Estruturas.Tools.Converter;
 import spark.Request;
 import spark.Response;
 
+import java.text.SimpleDateFormat;
+
 import Estruturas.DAOStruct.UserDAO;
 
 public class UserService {
@@ -41,4 +43,29 @@ public class UserService {
             // retorna o ID do usuario caso o mesmo for encontrado
         }
     }
-}
+
+    public Boolean update(Request req, Response res) throws Exception {
+        String nome = req.queryParams("nome");
+        String email = req.queryParams("email");
+        String senha = req.queryParams("senha");
+        String dataNasc = req.queryParams("nasc");
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date parsedDate = dateFormat.parse(dataNasc);
+        java.sql.Date dataNascDate = new java.sql.Date(parsedDate.getTime());
+
+        senha = conv.CriptografarMd5(senha);
+
+        int id = auth(req, res);
+
+        try {
+            user.updateUserName(id, nome);
+            user.updateUserEmail(id, email);
+            user.updateUserPassword(id, senha);
+            user.updateUserDateOfBirth(id, dataNascDate);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+}// fazer service para deletar usuario
