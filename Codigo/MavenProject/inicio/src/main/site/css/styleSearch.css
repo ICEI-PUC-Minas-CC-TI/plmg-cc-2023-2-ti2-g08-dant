@@ -41,7 +41,7 @@
 .botao{
     text-align: center;
     margin: auto;
-    background-color: lightblue;
+    background-color: var(--color2);
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;

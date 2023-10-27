@@ -1,7 +1,12 @@
+:root{
+    --color1: rgb(20, 20, 20);
+    --color2: white;
+    --color3: rgb(128, 128, 128);
+}
+
 /* Section */
 
 .container-dados{
-    background-color: lightsteelblue;
     margin: 50px 10px;
 }
 
@@ -9,18 +14,16 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 10px;
     margin-bottom: 30px;
 }
 
 .container-esq{
-    background-color: lightgray;
     width: 50%;
 }
 
 .container-esq .texto{
     margin: 15px 0px;
-    background-color: lightgoldenrodyellow;
+    background-color: var(--color2);
     padding: 5px;
 }
 
@@ -36,8 +39,10 @@
 
 .container-dir{
     width: 45%;
-    background-color: lightcoral;
+    padding: 5px;
+    background-color: var(--color2);
     text-align:justify;
+    border-radius: 5%;
 }
 
 .container-dir .descricao{
@@ -51,14 +56,24 @@
 /* Forum botão */
 
 .forum{
-    position: relative;
+    position: absolute;
+    background-color: var(--color1);
+    color: var(--color2);
     z-index: 5;
     display: flex;
     margin: auto;
-    width: 95%;
-    top: 25px;
+    width: 120px;
+    padding: 10px;
+    border-radius: 5%;
+    top: 100px;
+    left: 10px;
     justify-content: start;
     align-items: center;
+    transition: .3s;
+}
+
+.forum:hover{
+    transform: scale(1.02);
 }
 
 .forum span{
@@ -67,16 +82,15 @@
     cursor: context-menu;
 }
 
-.forum i{
+section .forum{
     cursor: pointer;
 }
 
 /* Container-forum */
 
 .container-forum{
-    background-color: lightsalmon;
-    margin: 50px 10px;
-    display: none;
+    margin: 10px 10px;
+    display: flex;
     gap: 10px;
     flex-wrap: wrap;
     justify-content: center;
@@ -92,7 +106,7 @@
     gap: 10px;
     align-items: center;
     text-align: justify;
-    background-color: lightslategray;
+    background-color: var(--color2);
     border-radius: 10px;
 }
 
@@ -104,7 +118,7 @@
 }
 
 .container-forum .container-comentarios .imagem-perfil{
-    background-color: lightblue;
+    background-color: var(--color3);
     padding: 20px;
 }
 
@@ -116,7 +130,7 @@
     gap: 10px;
     align-items: center;
     text-align: justify;
-    background-color: lightslategray;
+    background-color: var(--color2);
     border-radius: 10px;
     margin-top: 10px;
 }
@@ -140,6 +154,26 @@
     cursor: pointer;
 }
 
+/* barra navegar forum */
+
+.navegador-forum{
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--color2);
+    padding: 1px;
+    margin: 80px 30px;
+}
+
+.navegador-forum .button {
+    background-color: var(--color3);
+    padding: 20px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.navegador-forum .button:hover{
+    transform: scale(1.02);
+}
 
 /* Campo Preencher */
 
@@ -184,12 +218,14 @@
 .container-seu-comentario .seta{
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-top: 60px;
+    margin-bottom: 30px;
 }
 
 .container-seu-comentario .label{
     margin-top: 30px;
-    background-color: lightgray;
+    background-color: var(--color1);
+    padding: 5px;
     position: absolute;
     transition: .3s;
     margin-left: -850px;
@@ -207,13 +243,17 @@
 }
 
 .label label textarea{
-    width: 400px;
-    height: 70px;
+    width: 350px;
+    height: 40px;
+    border: 5%;
 }
 
 .label input{
     width: 100px;
     height: 30px;
+    border-radius: 10px;
+    background-color: var(--color2);
+    color: var(--color1);
 }
 
 .seta i{
@@ -244,14 +284,12 @@
     }
 
     .container-navegar{
-        background-color: lightblue;
         display: flex;
         justify-content: space-between;
         margin: 0 0px;
     }
 
     footer{
-        background-color: lightgoldenrodyellow;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -285,5 +323,17 @@
 
     .container-forum .container-comentarios p{
         font-size: 10px;
+    }
+
+    .container-dados{
+        margin: 100px 10px;
+    }
+
+    .label label textarea{
+        width: 200px;
+    }
+
+    .label input{
+        width: 70px;
     }
 }

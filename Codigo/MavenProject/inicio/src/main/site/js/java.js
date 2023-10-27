@@ -64,11 +64,31 @@ function Cadastrar (){
     
 }
 
-fetch("")
-    .then(res => res.json())
-    .then(res => {
-        console.log(res);
-    })
-    .catch(error => {
-        console.error("An error occurred:", error);
-    });
+const url = 'http://localhost:4567/HomePage/';
+const data = {
+    nome: 'Arthur',
+    email: 'algo@gmail.com',
+    senha: '1234',
+    nasc: '10102010'
+};
+
+fetch(url, {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+})
+.then(response => {
+    if (response.ok) {
+        return response.json(); // Se o servidor responde com JSON
+    } else {
+        throw new Error('Erro na solicitação POST.');
+    }
+})
+.then(data => {
+    console.log('Resposta do servidor:', data[0]);
+})
+.catch(error => {
+    console.error('Erro:', error);
+});
+

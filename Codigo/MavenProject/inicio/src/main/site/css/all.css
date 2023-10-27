@@ -232,8 +232,32 @@ footer{
 
 footer .descricao{
     margin-top: 10px;
+    display: flex;
+    gap: 50px;
+    justify-content: space-between;
 }
 
+footer .descricao .contatos ul{
+    list-style-type: none;
+}
+
+footer .descricao .contatos ul li{
+    margin-top: 15px;
+    text-align: start;
+}
+
+footer .descricao .contatos ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+footer .descricao .quem-somos h2{
+    text-align: end;
+}
+
+footer .descricao .quem-somos p{
+    text-align: justify;
+}
 footer .descricao{
     width: 50%;
 }

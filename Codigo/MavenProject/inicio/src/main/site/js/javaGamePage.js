@@ -128,18 +128,18 @@ function criarSubComentario(containerIndex, subComentarios) {
 
 // abrir e fechar comentários
 
-const rosto = document.querySelector(".forum i");
+const rosto = document.querySelector(".forum");
 const seta = document.querySelector(".container-seu-comentario");
 let contador = 0;
 
 rosto.addEventListener("click", () => {
 
     const game = document.querySelector(".container-dados");
-    const forum = document.querySelector(".container-forum");
+    const forum = document.querySelector(".container-tudo-forum");
 
     if (contador == 0) {
         game.style.display = "none";
-        forum.style.display = "flex";
+        forum.style.display = "block";
         seta.style.display = "block";
         contador++;
         comentarios()
