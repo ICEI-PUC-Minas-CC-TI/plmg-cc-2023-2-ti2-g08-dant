@@ -58,6 +58,10 @@ public class UserService {
 
         int id = auth(req, res);
 
+        if (id == -1) {
+            return false;
+        }
+
         try {
             user.updateUserName(id, nome);
             user.updateUserEmail(id, email);
