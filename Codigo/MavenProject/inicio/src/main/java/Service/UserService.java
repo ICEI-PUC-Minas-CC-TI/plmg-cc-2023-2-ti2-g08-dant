@@ -3,7 +3,7 @@ package Service;
 import Estruturas.Tools.Converter;
 import spark.Request;
 import spark.Response;
-
+import Estruturas.Objetos.User;
 import java.text.SimpleDateFormat;
 
 import Estruturas.DAOStruct.UserDAO;
@@ -72,4 +72,24 @@ public class UserService {
             return false;
         }
     }
+
+    public User getUserById(Request req, Response res) {
+        int id = Integer.parseInt(req.queryParams("id"));
+        try {
+            return user.GetUserByID(id);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public Boolean deleteUserById(Request req, Response res) {
+        int id = Integer.parseInt(req.queryParams("id"));
+        try {
+            user.deleteUserByID(id);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 }// fazer service para deletar usuario
