@@ -244,6 +244,7 @@ seta_dir.forEach((dir, index) => {
         }
     });
 });
+
 const apiKey = "";
 async function sendMessage() {
     const userMessage = document.querySelector(".recebe").value;
@@ -267,3 +268,19 @@ async function sendMessage() {
     const chatGPTResponse = data.choices[0].text.trim();
     document.querySelector(".insere").innerHTML += `<div style="margin-top: 10px; text-align: justfy; font-size: 10px;"> ChatGPT: ${chatGPTResponse}</div>`;
 }
+
+// function cor (){
+    
+//     const chat_bot = document.querySelector("chat-bot");
+//     const checkbox = document.querySelector(".empilhar");
+
+//     if(checkbox.checked == true){
+//         chat_bot.style.bottom = 0;
+//         console.log("abriu");
+//     }else{
+//         chat_bot.style.bottom = 255;
+//         console.log("fechou");
+//     }
+
+
+// }

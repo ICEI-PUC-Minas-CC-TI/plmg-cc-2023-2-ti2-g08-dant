@@ -88,6 +88,10 @@ section .forum{
 
 /* Container-forum */
 
+.container-tudo-forum{
+    display: none;
+}
+
 .container-forum{
     margin: 10px 10px;
     display: flex;
