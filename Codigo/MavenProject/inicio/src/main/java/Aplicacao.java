@@ -8,6 +8,7 @@ public class Aplicacao {
     public static void main(String[] args) throws Exception {
         UserService user = new UserService();
         GamesService game = new GamesService();
+        ForumService forum = new ForumService();
 
         // Habilitar o suporte a CORS (Cross-Origin Resource Sharing)
         options("/*", (request, response) -> {
@@ -25,11 +26,14 @@ public class Aplicacao {
         });
 
         before((request, response) -> {
-            response.header("Access-Control-Allow-Origin", "*"); // Permitir todas as origens (modifique conforme necessário)
+            response.header("Access-Control-Allow-Origin", "*"); // Permitir todas as origens (modifique conforme
+                                                                 // necessário)
         });
 
         path("/Index", () -> {
-            get("/login", (req, res) -> user.auth(req,res));
+            // autentica o usuario
+            get("/login", (req, res) -> user.auth(req, res));
+            // registra o usuario
             post("/registro", (req, res) -> {
                 boolean response = user.registro(req, res);
                 return response;
@@ -40,6 +44,16 @@ public class Aplicacao {
             get("/", (req, res) -> game.getGames());
         });
 
-        // /HomePage/
+        path("/UserPage", () -> {
+            // pega usuario por id
+            get("", (req, res) -> user.getUserById(req, res));
+            // deleta usuario por id
+            delete("/delete", (req, res) -> user.deleteUserById(req, res));
+        });
+
+        path("/ForumPage", () -> {
+            // pega forum por id
+            get("", (req, res) -> forum.getForumById(req, res));
+        });
     }
 }

@@ -155,7 +155,23 @@ public class UserDAO extends DAO {
         }
     }
     
-
+    public boolean UpdateUser(User user) {
+String sql = "UPDATE usuario SET nome = ?, senha = ?, email = ?, foto = ?, datanasc = ? WHERE id = ?";
+        try {
+            PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+            preparedStatement.setString(1, user.getNome());
+            preparedStatement.setString(2, user.getSenha());
+            preparedStatement.setString(3, user.getEmail());
+            preparedStatement.setBytes(4, user.getFoto());
+            preparedStatement.setDate(5, user.getDataNasc());
+            preparedStatement.setInt(6, user.getId());
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
     public boolean updateUserName(int id, String newUserName) {
         String sql = "UPDATE usuario SET nome = ? WHERE id = ?";

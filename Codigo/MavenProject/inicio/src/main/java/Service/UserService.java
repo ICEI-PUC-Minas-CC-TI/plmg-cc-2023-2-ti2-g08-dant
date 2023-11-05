@@ -3,6 +3,8 @@ package Service;
 import Estruturas.Tools.Converter;
 import spark.Request;
 import spark.Response;
+import Estruturas.Objetos.User;
+import java.text.SimpleDateFormat;
 
 import Estruturas.DAOStruct.UserDAO;
 
@@ -41,4 +43,53 @@ public class UserService {
             // retorna o ID do usuario caso o mesmo for encontrado
         }
     }
-}
+
+    public Boolean update(Request req, Response res) throws Exception {
+        String nome = req.queryParams("nome");
+        String email = req.queryParams("email");
+        String senha = req.queryParams("senha");
+        String dataNasc = req.queryParams("nasc");
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date parsedDate = dateFormat.parse(dataNasc);
+        java.sql.Date dataNascDate = new java.sql.Date(parsedDate.getTime());
+
+        senha = conv.CriptografarMd5(senha);
+
+        int id = auth(req, res);
+
+        if (id == -1) {
+            return false;
+        }
+
+        try {
+            user.updateUserName(id, nome);
+            user.updateUserEmail(id, email);
+            user.updateUserPassword(id, senha);
+            user.updateUserDateOfBirth(id, dataNascDate);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public User getUserById(Request req, Response res) {
+        int id = Integer.parseInt(req.queryParams("id"));
+        try {
+            return user.GetUserByID(id);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public Boolean deleteUserById(Request req, Response res) {
+        int id = Integer.parseInt(req.queryParams("id"));
+        try {
+            user.deleteUserByID(id);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+}// fazer service para deletar usuario
