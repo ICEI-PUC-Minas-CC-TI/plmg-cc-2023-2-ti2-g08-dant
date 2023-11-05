@@ -31,6 +31,7 @@ async function Confirmar() {
 }
 
 function Cadastrar() {
+    
     let email = document.getElementById("email2").value;
     let senha = document.getElementById("senha2").value;
     let confimasenha = document.getElementById("confirmasenha").value;
@@ -99,9 +100,6 @@ async function autenticarUsuario(str1, str2) {
     }
 }
 
-function reverter (str){
-
-}
 
 async function inserirUsuario(nome, email, senha, nasc) {
     const url = `http://localhost:4567/Index/registro?nome=${nome}&email=${email}&senha=${senha}&nasc=${nasc}`;

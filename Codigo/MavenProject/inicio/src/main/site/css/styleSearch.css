@@ -16,6 +16,12 @@
     border-radius: 5px;
     padding: 5px;
     font-size: 20px;
+    background-color: var(--cinza-claro);
+    transition: .3s;
+}
+
+.filtragem input:hover{
+    background-color: var(--color2);
 }
 
 .filtragem .barrapesquisa{
@@ -41,7 +47,7 @@
 .botao{
     text-align: center;
     margin: auto;
-    background-color: var(--color2);
+    background-color: var(--cinza-claro);
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
@@ -50,6 +56,7 @@
 
 .botao:hover{
     transform: translateY(-10%);
+    background-color: var(--color2);
 }
 
 /* Jogos para procurar */
@@ -66,7 +73,7 @@
 /* Jogo individual */
 
 .game{
-    background-color: var(--color2);
+    background-color: var(--color3);
     padding: 5px;
     border-radius: 10px;
     width: 15%;
@@ -75,158 +82,9 @@
     transition: .10s;
 }
 
-/*rgb*/
-
-@keyframes rgb {
-    0% {
-        box-shadow: 
-            0 0 0 0.1em rgb(255, 0, 0),
-            0 0 0 0.2em rgb(255, 85, 0),
-            0 0 0 0.3em rgb(255, 170, 0),
-            0 0 0 0.4em rgb(255, 255, 0),
-            0 0 0 0.5em rgb(170, 255, 0),
-            0 0 0 0.6em rgb(85, 255, 0),
-            0 0 0 0.7em rgb(0, 255, 0),
-            0 0 0 0.8em rgb(0, 255, 85),
-            0 0 0 0.9em rgb(0, 255, 170),
-            0 0 0 1em rgb(0, 255, 255);
-    }
-    10% {
-        box-shadow: 
-        0 0 0 0.1em rgb(255, 85, 0),
-        0 0 0 0.2em rgb(255, 170, 0),
-        0 0 0 0.3em rgb(255, 255, 0),
-        0 0 0 0.4em rgb(170, 255, 0),
-        0 0 0 0.5em rgb(85, 255, 0),
-        0 0 0 0.6em rgb(0, 255, 0),
-        0 0 0 0.7em rgb(0, 255, 85),
-        0 0 0 0.8em rgb(0, 255, 170),
-        0 0 0 0.9em rgb(0, 255, 255),
-        0 0 0 1em rgb(255, 0, 0);
-    }
-    20% {
-        box-shadow: 
-        0 0 0 0.1em rgb(255, 170, 0),
-        0 0 0 0.2em rgb(255, 255, 0),
-        0 0 0 0.3em rgb(170, 255, 0),
-        0 0 0 0.4em rgb(85, 255, 0),
-        0 0 0 0.5em rgb(0, 255, 0),
-        0 0 0 0.6em rgb(0, 255, 85),
-        0 0 0 0.7em rgb(0, 255, 170),
-        0 0 0 0.8em rgb(0, 255, 255),
-        0 0 0 0.9em rgb(255, 0, 0),
-        0 0 0 1em rgb(255, 85, 0);
-    }
-    30% {
-        box-shadow: 
-        0 0 0 0.1em rgb(255, 255, 0),
-        0 0 0 0.2em rgb(170, 255, 0),
-        0 0 0 0.3em rgb(85, 255, 0),
-        0 0 0 0.4em rgb(0, 255, 0),
-        0 0 0 0.5em rgb(0, 255, 85),
-        0 0 0 0.6em rgb(0, 255, 170),
-        0 0 0 0.7em rgb(0, 255, 255),
-        0 0 0 0.8em rgb(255, 0, 0),
-        0 0 0 0.9em rgb(255, 85, 0),
-        0 0 0 1em rgb(255, 170, 0);
-    }
-    40% {
-        box-shadow: 
-        0 0 0 0.1em rgb(170, 255, 0),
-        0 0 0 0.2em rgb(85, 255, 0),
-        0 0 0 0.3em rgb(0, 255, 0),
-        0 0 0 0.4em rgb(0, 255, 85),
-        0 0 0 0.5em rgb(0, 255, 170),
-        0 0 0 0.6em rgb(0, 255, 255),
-        0 0 0 0.7em rgb(255, 0, 0),
-        0 0 0 0.8em rgb(255, 85, 0),
-        0 0 0 0.9em rgb(255, 170, 0),
-        0 0 0 1em rgb(255, 255, 0);
-    }
-    50% {
-        box-shadow: 
-        0 0 0 0.1em rgb(85, 255, 0),
-        0 0 0 0.2em rgb(0, 255, 0),
-        0 0 0 0.3em rgb(0, 255, 85),
-        0 0 0 0.4em rgb(0, 255, 170),
-        0 0 0 0.5em rgb(0, 255, 255),
-        0 0 0 0.6em rgb(255, 0, 0),
-        0 0 0 0.7em rgb(255, 85, 0),
-        0 0 0 0.8em rgb(255, 170, 0),
-        0 0 0 0.9em rgb(255, 255, 0),
-        0 0 0 1em rgb(170, 255, 0);
-    }
-    60% {
-        box-shadow: 
-        0 0 0 0.1em rgb(0, 255, 0),
-        0 0 0 0.2em rgb(0, 255, 85),
-        0 0 0 0.3em rgb(0, 255, 170),
-        0 0 0 0.4em rgb(0, 255, 255),
-        0 0 0 0.5em rgb(255, 0, 0),
-        0 0 0 0.6em rgb(255, 85, 0),
-        0 0 0 0.7em rgb(255, 170, 0),
-        0 0 0 0.8em rgb(255, 255, 0),
-        0 0 0 0.9em rgb(170, 255, 0),
-        0 0 0 1em rgb(85, 255, 0);
-    }
-    70% {
-        box-shadow: 
-        0 0 0 0.1em rgb(0, 255, 85),
-        0 0 0 0.2em rgb(0, 255, 170),
-        0 0 0 0.3em rgb(0, 255, 255),
-        0 0 0 0.4em rgb(255, 0, 0),
-        0 0 0 0.5em rgb(255, 85, 0),
-        0 0 0 0.6em rgb(255, 170, 0),
-        0 0 0 0.7em rgb(255, 255, 0),
-        0 0 0 0.8em rgb(170, 255, 0),
-        0 0 0 0.9em rgb(85, 255, 0),
-        0 0 0 1em rgb(0, 255, 0);
-    }
-    80% {
-        box-shadow: 
-        0 0 0 0.1em rgb(0, 255, 170),
-        0 0 0 0.2em rgb(0, 255, 255),
-        0 0 0 0.3em rgb(255, 0, 0),
-        0 0 0 0.4em rgb(255, 85, 0),
-        0 0 0 0.5em rgb(255, 170, 0),
-        0 0 0 0.6em rgb(255, 255, 0),
-        0 0 0 0.7em rgb(170, 255, 0),
-        0 0 0 0.8em rgb(85, 255, 0),
-        0 0 0 0.9em rgb(0, 255, 0),
-        0 0 0 1em rgb(0, 255, 85);
-    }
-    90% {
-        box-shadow: 
-        0 0 0 0.1em rgb(0, 255, 255),
-        0 0 0 0.2em rgb(255, 0, 0),
-        0 0 0 0.3em rgb(255, 85, 0),
-        0 0 0 0.4em rgb(255, 170, 0),
-        0 0 0 0.5em rgb(255, 255, 0),
-        0 0 0 0.6em rgb(170, 255, 0),
-        0 0 0 0.7em rgb(85, 255, 0),
-        0 0 0 0.8em rgb(0, 255, 0),
-        0 0 0 0.9em rgb(0, 255, 85),
-        0 0 0 1em rgb(0, 255, 170);
-    }
-    100% {
-        box-shadow: 
-        0 0 0 0.1em rgb(255, 0, 0),
-        0 0 0 0.2em rgb(255, 85, 0),
-        0 0 0 0.3em rgb(255, 170, 0),
-        0 0 0 0.4em rgb(255, 255, 0),
-        0 0 0 0.5em rgb(170, 255, 0),
-        0 0 0 0.6em rgb(85, 255, 0),
-        0 0 0 0.7em rgb(0, 255, 0),
-        0 0 0 0.8em rgb(0, 255, 85),
-        0 0 0 0.9em rgb(0, 255, 170),
-        0 0 0 1em rgb(0, 255, 255);
-    }
-}
-
-.game:hover
-{
-    animation: rgb .1s infinite linear;
-    border:  10px solid transparent;
+.game:hover{
+    transform: scale(1.02);
+    box-shadow: 0px 0px 10px var(--vermelho-intenso);
 }
 
 /* Ver mais itens */
@@ -237,7 +95,7 @@
 }
 
 .mais-itens h2{
-    background-color: var(--color2);
+    background-color: var(--cinza-claro);
     width: 20%;
     margin: auto;
     border-radius: 10px;
@@ -247,8 +105,8 @@
 
 .mais-itens h2:hover{
     transform: translateY(-10%);
+    background-color: var(--color2);
 }
-
 
 @media (max-width: 800px){
     .hamburguer{

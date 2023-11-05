@@ -7,7 +7,7 @@
 /* Section */
 
 .container-dados{
-    margin: 50px 10px;
+    margin: 80px 10px;
 }
 
 .container-cima{
@@ -57,8 +57,8 @@
 
 .forum{
     position: absolute;
-    background-color: var(--color1);
-    color: var(--color2);
+    background-color: var(--cinza-claro);
+    color: var(--color1);
     z-index: 5;
     display: flex;
     margin: auto;
@@ -163,20 +163,22 @@ section .forum{
 .navegador-forum{
     display: flex;
     justify-content: space-around;
-    background-color: var(--color2);
     padding: 1px;
     margin: 80px 30px;
 }
 
 .navegador-forum .button {
-    background-color: var(--color3);
+    background-color: var(--cinza-claro);
     padding: 20px;
+    border-radius: 5px;
     cursor: pointer;
     transition: .3s;
 }
 
 .navegador-forum .button:hover{
     transform: scale(1.02);
+    background-color: var(--color2);
+    color: var(--preto);
 }
 
 /* Campo Preencher */
@@ -262,9 +264,10 @@ section .forum{
 
 .seta i{
     margin-top: 80px;
-    left: 5px;
+    left: 15px;
     z-index: 50;
     position: absolute;
+    color: var(--cinza-claro);
 }
 
 .fake-2{
