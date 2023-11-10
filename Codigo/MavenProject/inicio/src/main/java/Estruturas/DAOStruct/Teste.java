@@ -4,7 +4,12 @@ import Estruturas.DAOStruct.GameDAO;
 import Estruturas.Objetos.Forum;
 import Estruturas.Objetos.Game;
 import java.util.LinkedList;
+
+import com.google.gson.Gson;
+
 import Estruturas.Objetos.Post;
+import Estruturas.Objetos.User;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 public class Teste {
@@ -19,30 +24,16 @@ public class Teste {
         }
     }
     public static void main(String[] args)throws Exception {
-      GameDAO jogodao = new GameDAO();
-        LinkedList<Game> allgames = jogodao.GetAllGames();
- 
-        for(Game g : (LinkedList<Game>)allgames){
-       
-        }
-      
-        //deletar todos os games
-        delete();
-        inserirGame(allgames);
+      UserDAO user = new UserDAO();
+      System.out.println(convertUserToJson(user.GetUserByID(20)));
 
 
        
     }
 
-    public static void inserirGame(LinkedList<Game> games){
-        int appid = 1;
-        for(Game g : games){
-            GameDAO gameDAO = new GameDAO();
-            gameDAO.insertGame(appid, g.getNome(), g.getJson());
-            appid++;
-            System.out.println("Inserido" + g.getNome());
-        }
+    private static String convertUserToJson(User user) {
+        Gson gson = new Gson();
+        return gson.toJson(user);
         
-     
     }
 }
