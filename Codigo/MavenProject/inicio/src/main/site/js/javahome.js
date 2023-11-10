@@ -321,7 +321,7 @@ seta_dir.forEach((dir, index) => {
     });
 });
 
-const apiKey = "";
+const apiKey = "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";
 async function sendMessage() {
     const userMessage = document.querySelector(".recebe").value;
     document.querySelector(".recebe").value = '';
