@@ -49,6 +49,8 @@ public class Aplicacao {
             get("/user", (req, res) -> user.getUserById(req, res));
             // deleta usuario por id
             delete("/delete", (req, res) -> user.deleteUserById(req, res));
+            // muda informações de um usuario
+            put("/update", (req,res) -> user.update(req, res));
         });
 
         path("/ForumPage", () -> {

@@ -143,21 +143,6 @@ public class GameDAO extends DAO {
         return games;
     }
 
-    public LinkedList<Game> GetAllGamesJson() throws Exception {
-        LinkedList<Game> games = new LinkedList<Game>();
-
-        String sql = "SELECT json FROM games ORDER BY appid;";
-
-        PreparedStatement preparedStatement = conexao.prepareStatement(sql);
-        ResultSet resultSet = preparedStatement.executeQuery();
-
-        while (resultSet.next()) {
-            games.add(new Game(resultSet.getInt("appid"), resultSet.getString("nome"), resultSet.getString("json")));
-        }
-
-        return games;
-    }
-
     // fazer função para pesquisar por nome, preço, genero;
 
 }
