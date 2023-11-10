@@ -28,16 +28,15 @@ let strFOOTER = `
 </div>
 <hr>
 <div class="quem-somos">
-    <h3>D.A.N.T</h3>
+    <div class="imagem">
+        <img src="content/dant2.png" width = "10%">
+    </div>
     <p>Na D.A.N.T, nossa paixão pelo mundo dos jogos online é o que nos move e nos define. Somos mais do que uma empresa de distribuição de jogos; somos entusiastas, inovadores e construtores de comunidades virtuais. Nossa missão é fornecer uma plataforma de jogos online excepcional que oferece diversão, entretenimento e conexões para jogadores em todo o mundo. Buscamos criar uma experiência de jogo envolvente e emocionante, proporcionando acesso a uma ampla variedade de títulos, desde os mais recentes lançamentos até clássicos atemporais.
     </p>
 </div>
 <hr>
 <div class="copiright">
     <h4>Copyright © 2023 D.A.N.T: Todos os direitos reservados.</h4>
-    <div class="imagem">
-        <img src="content/dant2.png">
-    </div>
 </div>
 </div>
 `
