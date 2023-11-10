@@ -127,11 +127,13 @@
 /* Sim ou nao */
 
 .certeza{
+    display: none;
     background-color: var(--color2);
+    border-radius: 5px;
+    backdrop-filter: blur(10px);
     position: absolute;
     margin: 300px auto;
     padding: 20px;
-    display: none;
 }
 
 .opcoes{

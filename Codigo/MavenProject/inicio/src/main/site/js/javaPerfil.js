@@ -84,10 +84,11 @@ const deletar = document.querySelector(".deletar");
 const sim = document.querySelector(".sim");
 const nao = document.querySelector(".nao");
 
-deletar.addEventListener("click", () =>{
-  const certeza = document.querySelector(".container-deletar .certeza");
+deletar.addEventListener("click", async () =>{
+  const certeza = document.querySelector(".certeza");
+  console.log(certeza);
   certeza.style.display = "block";
-})
+});
 
 sim.addEventListener("click", async () => {
   let retorno = await deletarUsuario(appid);
