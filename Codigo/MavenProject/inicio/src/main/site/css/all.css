@@ -9,10 +9,29 @@
     --color1: rgb(20, 20, 20);
     --color2: white;
     --color3: rgb(128, 128, 128);
+
+    --vermelho-escuro: #FF0000;
+    --vermelho-profundo: #CC0000;
+    --vermelho-intenso: #DD3333;
+  
+    --preto: #000000;
+    --preto-profundo: #111111;
+    --preto-rico: #333333;
+  
+    --cinza-escuro: #333333;
+    --cinza-grafite: #555555;
+    --cinza-carvão: #222222;
+    --cinza-claro: #CCCCCC;
+  
+    --azul-escuro: #0000FF;
+    --azul-profundo: #000099;
+    --azul-oceano: #003366;
+  
+    --amarelo: #FFFF00;
 }
 
 body{
-    background-color: var(--color3);
+    background-color: var(--cinza-carvão);
 }
 
 /* Chat-bot */
@@ -40,7 +59,7 @@ chat-bot{
 }
 
 .empilhar:checked{
-    top: 380px;
+    top: 370px;
 }
 
 .empilhar:checked ~ chat-bot {
@@ -88,27 +107,27 @@ chat-bot i{
 /* Barra de navegação */
 
 .container-navegar{
-    background-color: var(--color2);
+    background-color: var(--cinza-claro);
     display: flex;
     justify-content: space-between;
-    margin: 0 10px;
+    margin: 0 5px;
 }
 
 .links ul{
     list-style-type: none;
     display: flex;
-    gap: 10px;
+    gap: 20px;
 }
 
 .links ul li a{
-    color: white;
+    color: var(--color1);
     font-size: large;
     text-decoration: none;
 }
 
 .container-navegar .direita .profile{
-    background-color: var(--color1);
-    padding: 35px;
+    background-color: var(--cinza-carvão);
+    padding: 25px;
 }
 
 .container-navegar .direita .profile i{
@@ -126,7 +145,7 @@ chat-bot i{
 
 .container-navegar .esquerda a{
     display: flex;
-    justify-content: center;
+    margin-left: 10px;
 }
 
 .container-navegar .esquerda a img{ 
@@ -138,7 +157,6 @@ chat-bot i{
 .container-navegar .esquerda{
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
     align-items: center;
 }
 
@@ -148,14 +166,22 @@ chat-bot i{
 }
 
 .links ul li{
-    background-color: var(--color1);
-    padding: 30px;
-    border: 1px solid black;
+    padding: 20px;
     transition: .3s;
+}
+
+.links ul li a{
+    font-size: 15px;
 }
 
 .links ul li:hover{
     transform: scale(0.9);
+    background-color: var(--cinza-grafite);
+    color: var(--color2);
+}
+
+.links ul li:hover a {
+    color: var(--color2);
 }
 
 /* Hamburger */
@@ -168,7 +194,7 @@ chat-bot i{
 .hamburguer input{
     position: absolute;
     z-index: 100;
-    margin-right: 20px;
+    margin-left: 10px;
     width: 50px;
     height: 50px;
     opacity: 0;
@@ -179,7 +205,8 @@ chat-bot i{
     position: absolute;
     z-index: 50;
     font-size: 50px;
-    margin-top: 25px;
+    margin-top: 32px;
+    margin-left: 10px;
 }
 
 .hamburguer ul{
@@ -188,7 +215,7 @@ chat-bot i{
     transition: .3s;
     height: 100vw;
     margin-left: -300px;
-    z-index: 0;
+    z-index: 45;
 }
 
 .hamburguer input:checked ~ ul{
@@ -214,15 +241,10 @@ chat-bot i{
     gap: 20px;
 }
 
-.direita .profile img{
-    border-radius: 30px;
-    /* mudar */
-}
-
 /* Foooter */
 
 footer{
-    background-color: var(--color2);
+    background-color: var(--cinza-claro);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -230,36 +252,89 @@ footer{
     gap: 20px;
 }
 
-footer .descricao{
-    margin-top: 10px;
+.container-footer{
+    margin: 10px 100px;
+}
+
+.container-footer .redes-sociais{ 
+    margin-bottom: 10px;
     display: flex;
-    gap: 50px;
     justify-content: space-between;
 }
 
-footer .descricao .contatos ul{
+.container-footer .redes-sociais .cima{
+    background-color: var(--cinza-grafite);
+    padding: 5px;
+    border-radius: 10%;
+}
+
+.container-footer .redes-sociais .cima a{
+    text-decoration: none;
+    color: var(--preto-profundo);
+}
+
+.container-footer .redes-sociais ul{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
     list-style-type: none;
 }
 
-footer .descricao .contatos ul li{
-    margin-top: 15px;
-    text-align: start;
-}
-
-footer .descricao .contatos ul li a{
+.container-footer .redes-sociais ul li a{
     text-decoration: none;
-    color: black;
+    color: var(--color1);
+    cursor: pointer;
+    transition: .3s;
 }
 
-footer .descricao .quem-somos h2{
-    text-align: end;
+.container-footer .redes-sociais ul li a:hover{
+    color: var(--vermelho-escuro);
 }
 
-footer .descricao .quem-somos p{
-    text-align: justify;
+.container-footer .recursos{
+    margin: 10px 0px;
 }
-footer .descricao{
-    width: 50%;
+
+.container-footer .recursos h3{
+    margin: 20px 0px;
+}
+
+.container-footer .recursos .uls{
+    display: flex;
+    gap: 40px;
+}
+
+.container-footer .recursos .uls ul{
+    list-style: none;
+}
+
+.container-footer .recursos .uls ul li{
+    margin-bottom: 5px;
+}
+.container-footer .recursos .uls ul li a{
+    text-decoration: none;
+    color: var(--preto-profundo);
+}
+.container-footer hr{
+    margin: 40px auto;
+    width: 80%;
+    background-color: var(--preto);
+}
+
+.container-footer .quem-somos .imagem{
+    margin-bottom: 15px;
+}
+
+.container-footer .copiright{
+    margin: 10px auto;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.container-footer .copiright h4{
+    margin: auto 0px;
 }
 
 @media (max-width: 800px){

@@ -1,9 +1,5 @@
-const adm = {
-    email: "adm@gmail.com",
-    senha: "1234",
-}
 
-function Mudar (){
+function Mudar() {
     elemento = document.getElementById("cadastrar");
     bloco = document.getElementById("container-bloco");
     bloco.style.display = "none";
@@ -11,7 +7,7 @@ function Mudar (){
     bloco2.style.display = "flex";
 }
 
-function Voltar (){
+function Voltar() {
     elemento = document.getElementById("voltar");
     bloco = document.getElementById("container-registrar");
     bloco.style.display = "none";
@@ -19,76 +15,111 @@ function Voltar (){
     bloco2.style.display = "flex";
 }
 
-function Confirmar (){
-
+async function Confirmar() {
     let email = document.getElementById("email").value;
     let senha = document.getElementById("senha").value;
 
-    if (email == adm.email && senha == adm.senha) {
-        alert("Bem vindo de Volta");
-        window.location.href = "HomePage.html";
+    let dado = await autenticarUsuario(email, senha);
+
+    if (dado === -1) {
+        alert("Senha ou email inválidos");
     } else {
-        alert("Senha ou email errados");
+        alert("Bem vindo de Volta");
+        localStorage.setItem("appid", dado);
+        window.location.href = "HomePage.html";
     }
-    
 }
 
-function Cadastrar (){
-
+function Cadastrar() {
+    
     let email = document.getElementById("email2").value;
     let senha = document.getElementById("senha2").value;
     let confimasenha = document.getElementById("confirmasenha").value;
     let nome = document.getElementById("nome").value;
     let date = document.getElementById("date").value;
     let termo = document.getElementById("termodeuso");
-    console.log(nome);
 
-    if (email != "" && senha != "" && nome != "" && date != "" && confirmasenha != "") {
-        if(senha == confimasenha){
-            if(termo.checked){
-                // manda email, senha, nome, date para o backend meu bom
-                alert("Cadastrado");
-                window.location.href = "bobo.html";
+    if (email != "" && senha != "" && nome != "" && date != "" && confimasenha != "") {
+        if (senha === confimasenha) {
+            if (termo.checked) {
+                inserirUsuario(nome, email, senha, formatarData(date))
+                    .then(data => {
+                        console.log(data);
+                        if (!data === true) {
+                            alert("Cadastrado");
+                            window.location.href = "HomePage.html";
+                        } else {
+                            alert("Ocorreu um erro, realize novamente o cadastro");
+                        }
+                    })
+                    .catch(error => {
+                        alert("Erro ao cadastrar: " + error);
+                    });
+            } else {
+                alert("Aceite os termos de uso");
             }
-            else{
-                alert("Aceite os termos de uso")
-            }
-        }
-        else{
+        } else {
             alert("Suas senhas estão diferentes");
         }
-    }
-    else{
+    } else {
         alert("Preencha todos os dados");
     }
-    
 }
 
-const url = 'http://localhost:4567/HomePage/';
-const data = {
-    nome: 'Arthur',
-    email: 'algo@gmail.com',
-    senha: '1234',
-    nasc: '10102010'
-};
+function formatarData(data) {
+    // Divide a data em dia, mês e ano
+    const partes = data.split('-');
+    
+    // Reorganiza as partes da data no formato desejado
+    const dataFormatada = partes[2] + '-' + partes[1] + '-' + partes[0];
+    
+    return dataFormatada;
+}
 
-fetch(url, {
-    method: 'GET',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-})
-.then(response => {
-    if (response.ok) {
-        return response.json(); // Se o servidor responde com JSON
-    } else {
-        throw new Error('Erro na solicitação POST.');
+async function autenticarUsuario(str1, str2) {
+    const url = `http://localhost:4567/Index/login?email=${str1}&senha=${str2}`;
+
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            return data;
+        } else {
+            throw new Error('Erro na solicitação GET.');
+        }
+    } catch (error) {
+        console.error('Erro:', error);
+        throw -1; // Retorna -1 em caso de erro
     }
-})
-.then(data => {
-    console.log('Resposta do servidor:', data[0]);
-})
-.catch(error => {
-    console.error('Erro:', error);
-});
+}
 
+
+async function inserirUsuario(nome, email, senha, nasc) {
+    const url = `http://localhost:4567/Index/registro?nome=${nome}&email=${email}&senha=${senha}&nasc=${nasc}`;
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            return data;
+        } else {
+            throw new Error('Erro na solicitação POST.');
+        }
+    } catch (error) {
+        console.error('Erro:', error);
+        return false; // Retorna false em caso de erro
+    }
+}

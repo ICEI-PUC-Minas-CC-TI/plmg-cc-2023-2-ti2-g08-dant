@@ -17,10 +17,23 @@
     width: 50%;
     height: 50vh;
     transition: .3s;
+    border-radius: 10px;
 }
 
 .container-carrosel .imagem-esq:hover{
     transform: scale(1.02);
+    box-shadow: 0px 0px 10px var(--vermelho-intenso);
+}
+
+.card{
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.card:hover{
+    transform: scale(0.95);
+    box-shadow: 0px 0px 5px var(--vermelho-intenso);
 }
 
 .container-carrosel .imagem-dir{ 
@@ -39,7 +52,7 @@
 }
 
 .container-classificacao .bloco{
-    background-color: var(--color2);
+    background-color: var(--cinza-claro);
     padding: 5px;
     border-radius: 5px;
     border: 1px solid black;
@@ -48,11 +61,12 @@
 
 .container-classificacao .bloco h1 a{
     text-decoration: none;
-    color: var(--color1);
+    color: var(--preto-profundo);
 }
 
 .container-classificacao .bloco:hover{
     transform: scale(1.05);
+    background-color: var(--color2);
 }
 
 /* Carrosel meio */
@@ -67,11 +81,18 @@
 
 .container-jogos .seta-esq, .seta-dir{
     cursor: pointer;
+    color: var(--cinza-claro);
+    transition: .3s;
+}
+
+.container-jogos .seta-esq:hover, .seta-dir:hover{
+    transform: scale(1.1);
 }
 
 .container-overflow .carrosel .text{
     margin-bottom:35px;
-    background-color: var(--color2);
+    background-color: var(--cinza-claro);
+    color: var(--preto-profundo);
     padding: 5px;
     border: 1px solid black;
     width: 30%;
@@ -83,10 +104,6 @@
     align-items: center;
 }
 
-.container-overflow .carrosel .container-jogos .seta{
-    cursor: pointer;
-}
-
 .container-overflow .carrosel .container-jogos .jogos{
     display: flex;
     gap: 20px;
@@ -96,15 +113,16 @@
 }
 
 .container-overflow .carrosel .container-jogos .jogos .content{
-    transition: .10s;
-    background-color: var(--color3);
+    transition: .3s;
+    background-color: var(--cinza-claro);
+    opacity: 0.5;
     padding: 5px;
     border-radius: 10px;
 }
 
 .container-overflow .carrosel .container-jogos .jogos .content:hover{
-    transform: scale(1.01);
-    padding: 2px;
+    transform: scale(0.95);
+    box-shadow: 0px 0px 10px var(--vermelho-intenso);
 }
 
 .container-overflow .carrosel .container-jogos .jogos .content .game a{

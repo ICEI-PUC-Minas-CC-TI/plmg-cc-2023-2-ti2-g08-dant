@@ -68,3 +68,91 @@ function returnFileSize(number) {
     return `${(number / 1048576).toFixed(1)} MB`;
   }
 }
+
+const appid = localStorage.getItem("appid");
+console.log(appid);
+
+user(appid);
+
+async function user (appid){
+  let userData = await getUsuario(appid);
+  console.log(userData);
+}
+
+
+const deletar = document.querySelector(".deletar");
+const sim = document.querySelector(".sim");
+const nao = document.querySelector(".nao");
+
+deletar.addEventListener("click", async () =>{
+  const certeza = document.querySelector(".certeza");
+  console.log(certeza);
+  certeza.style.display = "block";
+});
+
+sim.addEventListener("click", async () => {
+  let retorno = await deletarUsuario(appid);
+  console.log(retorno);
+  if (retorno === true) {
+    alert("Foi deletado");
+    localStorage.removeItem("appid");
+    window.location.href = "index.html";
+  }
+  else{
+    alert("Erro: tente novamente");
+    const certeza = document.querySelector(".certeza");
+    certeza.style.display = "none";
+  }
+})
+
+nao.addEventListener("click", () => {
+  const certeza = document.querySelector(".certeza");
+  certeza.style.display = "none";
+})
+
+async function deletarUsuario(appid) {
+
+  const url = `http://localhost:4567/UserPage/delete?id=${appid}`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      return data;
+    } else {
+      throw new Error('Erro na solicitação DELETE.');
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getUsuario(appid) {
+  const url = `http://localhost:4567/UserPage/user?id=${appid}`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      return data;
+    } else {
+      throw new Error('Erro na solicitação GET.');
+    }
+  } catch (error) {
+    throw error;
+  }
+}

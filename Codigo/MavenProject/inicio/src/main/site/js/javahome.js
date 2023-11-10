@@ -1,3 +1,79 @@
+let resp;
+
+controlaJogos(resp);
+
+async function controlaJogos(mandar) {
+    mandar = await receberJogos();
+    console.log(mandar);
+    let resp = {};
+    for (let i = 0; i < mandar.length; i++) {
+        resp[i] = {
+            appid: mandar[i].appid,
+            nome: mandar[i].nome,
+            steamappid: retornaId(mandar[i].json),
+            json: JSON.parse(mandar[i].json),
+        }
+    }
+
+    const imagemESQ = document.querySelector('.container-carrosel .imagem-esq');
+    const imagensDIR = document.querySelector('.container-carrosel .imagem-dir')
+    let imagemSTR = "";
+
+    imagemESQ.innerHTML = `<a href = "GamePage.html?id=${resp[0].appid}"><img src="${resp[0].json[resp[0].steamappid].data.screenshots[1].path_full}" id="card-prymario" width="100%" height="100%"></a>`
+
+    // for (let i = 1; i <= 5; i++) {
+    //     console.log(resp[i].json);
+    //     console.log(resp[i].json[resp[i].steamappid].data.screenshots[0].path_thumbnail)
+    //     imagemSTR += `<a href = "GamePage.html?id=${resp[i].appid}"><div class = "card"><img src="${resp[i].json[resp[i].steamappid].data.screenshots[0].path_thumbnail}" id="card-1" width="200px" height="100px" onclick="MudarCard(this)"> </div>`
+    // }
+    // filtro para scrennshots
+    
+    imagemSTR += `<a href = "#?id=${resp[10].appid}"><div class = "card"><img src="${resp[10].json[resp[10].steamappid].data.screenshots[0].path_thumbnail}" id="card-1" width="200px" height="100px" onclick="MudarCard(this)"> </div>`
+    imagemSTR += `<a href = "#?id=${resp[0].appid}"><div class = "card"><img src="${resp[0].json[resp[0].steamappid].data.screenshots[0].path_thumbnail}" id="card-1" width="200px" height="100px" onclick="MudarCard(this)"> </div>`
+    imagemSTR += `<a href = "#?id=${resp[41].appid}"><div class = "card"><img src="${resp[41].json[resp[41].steamappid].data.screenshots[0].path_thumbnail}" id="card-1" width="200px" height="100px" onclick="MudarCard(this)"> </div>`
+    imagemSTR += `<a href = "#?id=${resp[100].appid}"><div class = "card"><img src="${resp[100].json[resp[100].steamappid].data.screenshots[0].path_thumbnail}" id="card-1" width="200px" height="100px" onclick="MudarCard(this)"> </div>`
+    imagensDIR.innerHTML = imagemSTR;
+    return resp;
+}
+
+function retornaId(str) {
+    let resp = "";
+    let isParsingID = false;
+
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === '"' && !isParsingID) {
+            isParsingID = true;
+        } else if (str[i] === '"' && isParsingID) {
+            break;
+        } else if (isParsingID) {
+            resp += str[i];
+        }
+    }
+
+    return resp;
+}
+
+async function receberJogos() {
+    const url = `http://localhost:4567/HomePage/`;
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            throw new Error("Deu pau GET");
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
 let pageTAM = document.body.clientWidth;
 console.log(pageTAM);
 
@@ -12,25 +88,25 @@ function MudarCard(element) {
     primario.src = aux2;
 }
 
-const imagemESQ = document.querySelector('.container-carrosel .imagem-esq');
-const imagensDIR = document.querySelector('.container-carrosel .imagem-dir')
-const imagemContainer = [];
-let imagemSTR = "";
+// const imagemESQ = document.querySelector('.container-carrosel .imagem-esq');
+// const imagensDIR = document.querySelector('.container-carrosel .imagem-dir')
+// const imagemContainer = [];
+// let imagemSTR = "";
 
-for (let i = 0; i < 5; i++) {
-    imagemContainer[i] = {
-        src: "#",
-        appid: i,
-    };
-}
+// for (let i = 0; i < 5; i++) {
+//     imagemContainer[i] = {
+//         src: "#",
+//         appid: i,
+//     };
+// }
 
-imagemESQ.innerHTML = `<a href = "GamePage.html?id=${imagemContainer[0].appid}"><img src="${imagemContainer[0].src}" id="card-prymario" width="100%" height="100%"></a>`
+// imagemESQ.innerHTML = `<a href = "GamePage.html?id=${imagemContainer[0].appid}"><img src="${imagemContainer[0].src}" id="card-prymario" width="100%" height="100%"></a>`
 
-for (let i = 1; i <= 4; i++) {
-    imagemSTR += `<a href"GamePage.html${imagemContainer[i].appid}"><div class = "card"><img src="${imagemContainer[i].src}" id="card-1" width="200px" height="100px" onclick="MudarCard(this)"> </div>`
-}
+// for (let i = 1; i <= 4; i++) {
+//     imagemSTR += `<a href"GamePage.html${imagemContainer[i].appid}"><div class = "card"><img src="${imagemContainer[i].src}" id="card-1" width="200px" height="100px" onclick="MudarCard(this)"> </div>`
+// }
 
-imagensDIR.innerHTML = imagemSTR;
+// imagensDIR.innerHTML = imagemSTR;
 
 // Barra de Categorias
 
@@ -244,6 +320,7 @@ seta_dir.forEach((dir, index) => {
         }
     });
 });
+
 const apiKey = "";
 async function sendMessage() {
     const userMessage = document.querySelector(".recebe").value;

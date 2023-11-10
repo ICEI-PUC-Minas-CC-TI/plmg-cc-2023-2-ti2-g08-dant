@@ -8,12 +8,11 @@
 /* Section */
 
 .container-dados {
-    background-color: var(--color3);
-    margin: 100px 20px 300px 20px;
+    margin: 100px 20px 100px 20px;
     height: 400px;
 }
 
-.container-dados label {
+.container-dados {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -22,11 +21,12 @@
 
 /* Esq */
 
-.tudo-esq{
+.tudo-esq {
     background-color: var(--color3);
+    border-radius: 10px;
 }
 
-label .esq {
+.esq {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -34,7 +34,11 @@ label .esq {
     margin: 10px;
 }
 
-label .esq input {
+.esq h3 {
+    margin-bottom: 2px;
+}
+
+.esq input {
     width: 400px;
     height: 40px;
     padding: 5px;
@@ -44,9 +48,15 @@ label .esq input {
 
 /* Dir */
 
-label .dir {
+.dir {
     background-color: var(--color3);
     width: 500px;
+    height: 500px;
+}
+
+.dir label{
+    display: flex;
+    justify-content: center;
 }
 
 .texto {
@@ -60,11 +70,7 @@ label .dir {
     transition: .3s;
 }
 
-.texto:hover{
-    transform: scale(1.05);
-}
-
-.preview ol li img{
+.preview ol li img {
     width: 100%;
     height: 400px;
 }
@@ -78,6 +84,10 @@ label .dir {
 }
 
 /* Deletar */
+
+.texto:hover {
+    transform: scale(1.05);   
+}
 
 .container-deletar {
     margin-top: 20px;
@@ -112,4 +122,47 @@ label .dir {
 
 .container-deletar .salvar:hover {
     transform: scale(1.05);
+}
+
+/* Sim ou nao */
+
+.certeza{
+    display: none;
+    background-color: var(--color2);
+    border-radius: 5px;
+    backdrop-filter: blur(10px);
+    position: absolute;
+    margin: 300px auto;
+    padding: 20px;
+}
+
+.opcoes{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.sim, .nao{
+    padding: 10px;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.nao{
+    color: var(--vermelho-escuro);
+}
+
+.sim{
+    color: green;
+}
+
+.sim:hover, .nao:hover{
+    transform: scale(1.05);
+}
+
+@media (max-width: 900px){
+    .tudo-esq{
+        margin-bottom: 20px;
+    }
 }

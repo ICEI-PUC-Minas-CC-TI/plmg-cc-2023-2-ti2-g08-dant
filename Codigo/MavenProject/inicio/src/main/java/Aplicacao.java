@@ -46,7 +46,7 @@ public class Aplicacao {
 
         path("/UserPage", () -> {
             // pega usuario por id
-            get("", (req, res) -> user.getUserById(req, res));
+            get("/user", (req, res) -> user.getUserById(req, res));
             // deleta usuario por id
             delete("/delete", (req, res) -> user.deleteUserById(req, res));
             // muda informações de um usuario
