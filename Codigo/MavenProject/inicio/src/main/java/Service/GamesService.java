@@ -23,10 +23,4 @@ public class GamesService {
 
         return gson.toJson(gamearr);
     }
-
-    public String getGameById(Request req, Response res) {
-        int id = Integer.parseInt(req.queryParams("id"));
-        Game gameResp = game.getGameByID(id);
-        return gson.toJson(gameResp);
-    }
 }
