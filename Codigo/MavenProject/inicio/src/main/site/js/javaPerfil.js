@@ -165,7 +165,7 @@ quero.addEventListener("click", async () => {
   const input_senha = document.querySelector(".senha").value;
   const input_date = document.querySelector(".date").value;
 
-  let retorno = await atualizaUsuario(input_name,input_email,input_senha,input_date);
+  let retorno = (await atualizaUsuario(input_name,input_email,input_senha,input_date,appid));
   console.log(retorno);
   if (retorno === true) {
     alert("Salvado com sucesso");
@@ -230,14 +230,26 @@ async function getUsuario(appid) {
   }
 }
 
-async function atualizaUsuario(nome, email, senha, nasc) {
-  const url = `http://localhost:4567/UserPage/update?nome=${nome}&email=${email}&senha=${senha}&nasc=${nasc}`;
+async function atualizaUsuario(nome, email, senha, nasc, id) {
+
+  // let headersList = {
+  //   "Accept": "*/*",
+  //  }
+   
+  //  let response = await fetch(`http://localhost:4567/UserPage/update?nome=${nome}&email=${email}&senha=${senha}&nasc=${nasc}&id=${id}`, { 
+  //    method: "PUT",
+  //    headers: headersList
+  //  });
+   
+  //  return response;
+  const url = `http://localhost:4567/UserPage/update?nome=${nome}&email=${email}&senha=${senha}&nasc=${nasc}&id=${id}`;
 
   try {
     const response = await fetch(url, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        "Accept": "*/*"
       },
     });
 
@@ -245,7 +257,7 @@ async function atualizaUsuario(nome, email, senha, nasc) {
       const data = await response.json();
       return data;
     } else {
-      throw new Error('Erro na solicitação GET.');
+      throw new Error('Erro na solicitação PUT.');
     }
   } catch (error) {
     throw error;

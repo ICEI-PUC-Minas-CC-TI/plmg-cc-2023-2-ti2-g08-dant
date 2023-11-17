@@ -61,8 +61,8 @@ public class Aplicacao {
                 boolean response = forum.newForum(req, res);
                 return response;
             });
+            //Delete Forum
             delete("/delete", (req, res) -> forum.deleteForum(req, res));
-
         });
     }
 }
