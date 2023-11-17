@@ -38,9 +38,6 @@ public class GameDAO extends DAO {
         }
     }
 
-
-
-
     public Game getGameByID(int appid) {
         Game game = null;
         if (appid >= 0) {
@@ -84,7 +81,6 @@ public class GameDAO extends DAO {
         return games;
 
     }
-    
 
     public void InsertJson(int appid, String json) {
         String sql = "UPDATE games SET json = ? WHERE appid = ?";
@@ -111,7 +107,6 @@ public class GameDAO extends DAO {
             games.add(new Game(resultSet.getInt("appid"), resultSet.getString("nome"), resultSet.getString("json")));
 
         }
-
         return games;
     }
 

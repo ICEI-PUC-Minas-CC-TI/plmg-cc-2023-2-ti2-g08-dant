@@ -50,12 +50,19 @@ public class Aplicacao {
             // deleta usuario por id
             delete("/delete", (req, res) -> user.deleteUserById(req, res));
             // muda informações de um usuario
-            put("/update", (req,res) -> user.update(req, res));
+            put("/update", (req, res) -> user.update(req, res));
         });
 
         path("/ForumPage", () -> {
             // pega forum por id
             get("", (req, res) -> forum.getForumById(req, res));
+            // cadastra forum
+            post("/new", (req, res) -> {
+                boolean response = forum.newForum(req, res);
+                return response;
+            });
+            delete("/delete", (req, res) -> forum.deleteForum(req, res));
+
         });
     }
 }
