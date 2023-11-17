@@ -6,6 +6,8 @@ import spark.Response;
 import Estruturas.Objetos.User;
 import java.text.SimpleDateFormat;
 
+import com.google.gson.Gson;
+
 import Estruturas.DAOStruct.UserDAO;
 
 public class UserService {
@@ -56,7 +58,7 @@ public class UserService {
 
         senha = conv.CriptografarMd5(senha);
 
-        int id = auth(req, res);
+        int id = Integer.parseInt(req.queryParams("id"));
 
         if (id == -1) {
             return false;
@@ -73,10 +75,16 @@ public class UserService {
         }
     }
 
-    public User getUserById(Request req, Response res) {
+    private String convertUserToJson(User user) {
+        Gson gson = new Gson();
+        return gson.toJson(user);
+
+    }
+
+    public String getUserById(Request req, Response res) {
         int id = Integer.parseInt(req.queryParams("id"));
         try {
-            return user.GetUserByID(id);
+            return (convertUserToJson(user.GetUserByID(id)));
         } catch (Exception e) {
             return null;
         }

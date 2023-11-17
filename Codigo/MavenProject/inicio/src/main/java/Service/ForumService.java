@@ -13,4 +13,20 @@ public class ForumService {
 
         return forum.getForumByGameID(id);
     }
+
+    public Boolean newForum(Request req, Response res) {
+        Boolean resp = false;
+        int gameId = Integer.parseInt(req.queryParams("gameID"));
+        String nome = req.queryParams("gameName");
+
+        resp = forum.insertForum(gameId, nome);
+        return resp;
+    }
+
+    public Boolean deleteForum(Request req, Response res) {
+        Boolean resp = false;
+        int id = Integer.parseInt(req.queryParams("id"));
+        resp = forum.removeForumByID(id);
+        return resp;
+    }
 }
