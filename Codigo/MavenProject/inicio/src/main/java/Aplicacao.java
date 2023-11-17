@@ -61,8 +61,11 @@ public class Aplicacao {
                 boolean response = forum.newForum(req, res);
                 return response;
             });
-            //Delete Forum
+            // Delete Forum
             delete("/delete", (req, res) -> forum.deleteForum(req, res));
+        });
+        path("/GamePage", () -> {
+            get("/game", (req, res) -> game.getGameById(req, res));
         });
     }
 }
