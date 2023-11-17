@@ -231,7 +231,7 @@ async function getUsuario(appid) {
 }
 
 async function atualizaUsuario(nome, email, senha, nasc) {
-  const url = `http://localhost:4567/UserPage/user?nome=${nome}&email=${email}&senha=${senha}&nasc=${nasc}`;
+  const url = `http://localhost:4567/UserPage/update?nome=${nome}&email=${email}&senha=${senha}&nasc=${nasc}`;
 
   try {
     const response = await fetch(url, {
