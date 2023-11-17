@@ -58,7 +58,7 @@ public class UserService {
 
         senha = conv.CriptografarMd5(senha);
 
-        int id = auth(req, res);
+        int id = Integer.parseInt(req.queryParams("id"));
 
         if (id == -1) {
             return false;
@@ -78,13 +78,13 @@ public class UserService {
     private String convertUserToJson(User user) {
         Gson gson = new Gson();
         return gson.toJson(user);
-        
+
     }
 
     public String getUserById(Request req, Response res) {
         int id = Integer.parseInt(req.queryParams("id"));
         try {
-            return (convertUserToJson(user.GetUserByID(id))); 
+            return (convertUserToJson(user.GetUserByID(id)));
         } catch (Exception e) {
             return null;
         }

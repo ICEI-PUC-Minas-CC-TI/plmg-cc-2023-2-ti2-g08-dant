@@ -4,14 +4,18 @@ import Estruturas.DAOStruct.GameDAO;
 
 import Estruturas.Objetos.Game;
 
+import spark.Request;
+import spark.Response;
+
 import java.util.LinkedList;
 
 import com.google.gson.Gson;
 
 public class GamesService {
+    GameDAO game = new GameDAO();
+    Gson gson = new Gson();
+
     public String getGames() throws Exception {
-        Gson gson = new Gson();
-        GameDAO game = new GameDAO();
 
         LinkedList<Game> gamearr = new LinkedList<>();
 
