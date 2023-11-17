@@ -1,8 +1,6 @@
 import static spark.Spark.*;
 import Service.*;
-
-import com.google.gson.*;
-import Estruturas.Objetos.Game;
+import Estruturas.*;
 
 public class Aplicacao {
     public static void main(String[] args) throws Exception {
@@ -63,6 +61,10 @@ public class Aplicacao {
             });
             //Delete Forum
             delete("/delete", (req, res) -> forum.deleteForum(req, res));
+        });
+
+        path("/GamePage", () -> {
+            get("/", (req, res) -> game.getGameById(req, res));
         });
     }
 }
