@@ -64,9 +64,5 @@ public class Aplicacao {
             //Delete Forum
             delete("/delete", (req, res) -> forum.deleteForum(req, res));
         });
-
-        path("/GamePage", () -> {
-            get("/", (req, res) -> game.getGameById(req, res));
-        });
     }
 }
