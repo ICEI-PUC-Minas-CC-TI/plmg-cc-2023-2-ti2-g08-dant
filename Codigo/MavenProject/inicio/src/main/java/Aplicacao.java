@@ -5,6 +5,7 @@ import com.google.gson.*;
 import Estruturas.Objetos.Game;
 
 public class Aplicacao {
+    
     public static void main(String[] args) throws Exception {
         UserService user = new UserService();
         GamesService game = new GamesService();
