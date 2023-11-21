@@ -16,6 +16,7 @@ public class ForumService {
         int id = Integer.parseInt(req.queryParams("id"));
 
         return gson.toJson(forum.getForumByGameID(id));
+        // amizade
     }
 
     public Boolean newForum(Request req, Response res) {
