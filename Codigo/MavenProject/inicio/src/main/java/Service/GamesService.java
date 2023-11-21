@@ -24,9 +24,12 @@ public class GamesService {
         return gson.toJson(gamearr);
     }
 
-    public String getGameById(Request req, Response res) {
-        int id = Integer.parseInt(req.queryParams("id"));
-        Game gameResp = game.getGameByID(id);
-        return gson.toJson(gameResp);
+    public String getGameById(Request req, Response resp) throws Exception {
+
+        Game gamearr = new Game();
+
+        gamearr = game.getGameByID(Integer.parseInt(req.queryParams("id")));
+
+        return gson.toJson(gamearr);
     }
 }

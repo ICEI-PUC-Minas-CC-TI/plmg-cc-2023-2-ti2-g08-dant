@@ -51,14 +51,13 @@ public class UserService {
         String email = req.queryParams("email");
         String senha = req.queryParams("senha");
         String dataNasc = req.queryParams("nasc");
+        int id = Integer.parseInt(req.queryParams("id"));
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date parsedDate = dateFormat.parse(dataNasc);
         java.sql.Date dataNascDate = new java.sql.Date(parsedDate.getTime());
 
         senha = conv.CriptografarMd5(senha);
-
-        int id = Integer.parseInt(req.queryParams("id"));
 
         if (id == -1) {
             return false;

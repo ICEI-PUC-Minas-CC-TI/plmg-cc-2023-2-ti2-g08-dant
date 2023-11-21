@@ -2,11 +2,9 @@ package Service;
 
 import spark.Request;
 import spark.Response;
-
-import com.google.gson.Gson;
-
 import Estruturas.DAOStruct.ForumDAO;
 import Estruturas.Objetos.Forum;
+import com.google.gson.Gson;
 
 public class ForumService {
     ForumDAO forum = new ForumDAO();

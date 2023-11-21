@@ -70,15 +70,56 @@ function returnFileSize(number) {
 }
 
 const appid = localStorage.getItem("appid");
-console.log(appid);
-
 user(appid);
 
 async function user (appid){
   let userData = await getUsuario(appid);
-  console.log(userData);
+  insereDados(userData);
 }
 
+function insereDados (str){
+  const input_name = document.querySelector(".nome");
+  const input_email = document.querySelector(".email");
+  const input_date = document.querySelector(".date");
+  // const input_senha = document.querySelector(".senha");
+  // const input_confirma_senha = document.querySelector(".confirmar_senha");
+  // input_senha.value = str.senha;
+  // input_confirma_senha.value = str.senha;
+  input_name.value = str.nome;
+  input_email.value = str.email;
+  input_date.value = formatarData(str.dataNasc);
+}
+
+function formatarData(inputData) {
+  // Mapeia os nomes dos meses para números
+  const meses = {
+      jan: '01',
+      fev: '02',
+      mar: '03',
+      abr: '04',
+      mai: '05',
+      jun: '06',
+      jul: '07',
+      ago: '08',
+      set: '09',
+      out: '10',
+      nov: '11',
+      dez: '12'
+  };
+
+  // Divide a entrada em partes usando espaços e vírgulas
+  const partes = inputData.split(/[\s,]+/);
+
+  // Obtém o ano, mês e dia
+  const ano = partes[2];
+  const mes = meses[partes[0].toLowerCase()];
+  const dia = partes[1];
+
+  // Formata a data no formato desejado
+  const dataFormatada = `${ano}-${mes}-${dia.padStart(2, '0')}`;
+
+  return dataFormatada;
+}
 
 const deletar = document.querySelector(".deletar");
 const sim = document.querySelector(".sim");
@@ -86,7 +127,6 @@ const nao = document.querySelector(".nao");
 
 deletar.addEventListener("click", async () =>{
   const certeza = document.querySelector(".certeza");
-  console.log(certeza);
   certeza.style.display = "block";
 });
 
@@ -108,6 +148,40 @@ sim.addEventListener("click", async () => {
 nao.addEventListener("click", () => {
   const certeza = document.querySelector(".certeza");
   certeza.style.display = "none";
+})
+
+const salvar = document.querySelector(".salvar");
+const quero = document.querySelector(".quero");
+const nao_quero = document.querySelector(".nao_quero");
+
+salvar.addEventListener("click", async () =>{
+  const salvarei = document.querySelector(".desejo_salvar");
+  salvarei.style.display = "block";
+});
+
+quero.addEventListener("click", async () => {
+  const input_name = document.querySelector(".nome").value;
+  const input_email = document.querySelector(".email").value;
+  const input_senha = document.querySelector(".senha").value;
+  const input_date = document.querySelector(".date").value;
+
+  let retorno = (await atualizaUsuario(input_name,input_email,input_senha,input_date,appid));
+  console.log(retorno);
+  if (retorno === true) {
+    alert("Salvado com sucesso");
+    const salvarei = document.querySelector(".desejo_salvar");
+    salvarei.style.display = "none";
+  }
+  else{
+    alert("Erro: tente novamente");
+    const salvarei = document.querySelector(".desejo_salvar");
+    salvarei.style.display = "none";
+  }
+})
+
+nao_quero.addEventListener("click", () => {
+  const salvarei = document.querySelector(".desejo_salvar");
+  salvarei.style.display = "none";
 })
 
 async function deletarUsuario(appid) {
@@ -147,10 +221,43 @@ async function getUsuario(appid) {
 
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
       return data;
     } else {
       throw new Error('Erro na solicitação GET.');
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function atualizaUsuario(nome, email, senha, nasc, id) {
+
+  // let headersList = {
+  //   "Accept": "*/*",
+  //  }
+   
+  //  let response = await fetch(`http://localhost:4567/UserPage/update?nome=${nome}&email=${email}&senha=${senha}&nasc=${nasc}&id=${id}`, { 
+  //    method: "PUT",
+  //    headers: headersList
+  //  });
+   
+  //  return response;
+  const url = `http://localhost:4567/UserPage/update?nome=${nome}&email=${email}&senha=${senha}&nasc=${nasc}&id=${id}`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        "Accept": "*/*"
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error('Erro na solicitação PUT.');
     }
   } catch (error) {
     throw error;
