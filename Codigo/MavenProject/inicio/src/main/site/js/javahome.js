@@ -233,8 +233,7 @@ async function controlaJogos(mandar) {
             }
         });
     });
-
-
+    
     return resp;
 }
 
