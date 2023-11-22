@@ -19,12 +19,10 @@ async function controlaJogos(mandar) {
     const imagensDIR = document.querySelector('.container-carrosel .imagem-dir')
     let imagemSTR = "";
 
-    imagemESQ.innerHTML = `<a href = "GamePage.html?id=${resp[20].appid}"><img src="${resp[20].json[resp[20].steamappid].data.header_image}" id="card-prymario" width="100%" height="100%"></a>`
+    imagemESQ.innerHTML = `<a href = "GamePage.html?appid=${resp[20].appid}"><img src="${resp[20].json[resp[20].steamappid].data.header_image}" id="card-prymario" width="100%" height="100%"></a>`
 
     for (let i = 10; i <= 14; i++) {
-        console.log(resp[i].json);
-        console.log(resp[i].json[resp[i].steamappid].data.header_image)
-        imagemSTR += `<a href = "GamePage.html?id=${resp[i].appid}"><div class = "card"><img src="${resp[i].json[resp[i].steamappid].data.header_image}" id="card-1" width="200px" height="100px" onclick="MudarCard(this)"> </div>`
+        imagemSTR += `<a href = "GamePage.html?appid=${resp[i].appid}"><div class = "card"><img src="${resp[i].json[resp[i].steamappid].data.header_image}" id="card-1" width="200px" height="100px" onclick="MudarCard(this)"> </div>`
     }
     // filtro para scrennshots
 

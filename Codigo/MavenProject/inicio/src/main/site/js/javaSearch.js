@@ -16,7 +16,6 @@ async function controlaJogos(mandar) {
         }
     }
 
-
     // Insersão dos jogos no html para pesquisa
 
     const divJOGOS = document.querySelector('.listgames');

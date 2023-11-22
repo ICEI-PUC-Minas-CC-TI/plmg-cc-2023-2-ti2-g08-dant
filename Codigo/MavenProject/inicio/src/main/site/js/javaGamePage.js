@@ -3,6 +3,96 @@ const searchURL = new URLSearchParams(url);
 let appid = searchURL.get('appid');
 appid = parseInt(appid);
 
+let teste;
+dadosJogo(teste);
+
+async function dadosJogo(mandar) {
+    mandar = await receberJogo(appid);
+    console.log(mandar);
+    let resp = {};
+    resp = {
+        appid: mandar.appid,
+        nome: mandar.nome,
+        steamappid: retornaId(mandar.json),
+        json: JSON.parse(mandar.json),
+    }
+
+    console.log(resp);
+
+    const nomeDoGame = document.querySelector(".container-esq .texto");
+    let nomeSTR = `<h1>${resp.nome}</h1>`
+    nomeDoGame.innerHTML = nomeSTR;
+
+    const cima = document.querySelector(".cima");
+    const baixo = document.querySelector(".baixo");
+    let strBAIXO = "";
+
+    cima.innerHTML = `<img src="${resp.json[resp.steamappid].data.header_image}" width="100%" height="400px" id="card-primario">`
+
+    for (let i = 0; i < 3; i++) {
+        strBAIXO += `
+    <div class="card">
+        <img src="${resp.json[resp.steamappid].data.screenshots[i].path_thumbnail}" width="100%" height="100px" onclick="MudarCard(this)">
+    </div>
+    `
+    }
+
+    baixo.innerHTML = strBAIXO;
+
+    const container_direita = document.querySelector(".container-dir");
+
+    let DireitaStr = `
+    <div class="descricao">
+        <h3>${resp.json[resp.steamappid].data.detailed_description}</h3>
+    </div>
+    <div class="preco">
+        <h5>Preco ${resp.json[resp.steamappid].data.price_overview.final_formatted}</h5>
+    </div>
+    `
+
+    container_direita.innerHTML = DireitaStr;
+
+    return resp;
+}
+
+function retornaId(str) {
+    let resp = "";
+    let isParsingID = false;
+
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === '"' && !isParsingID) {
+            isParsingID = true;
+        } else if (str[i] === '"' && isParsingID) {
+            break;
+        } else if (isParsingID) {
+            resp += str[i];
+        }
+    }
+
+    return resp;
+}
+
+async function receberJogo(id) {
+    const url = `http://localhost:4567/GamePage/game?id=${id}`;
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            throw new Error("Deu pau GET");
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
 function MudarCard(element) {
     let primario = document.getElementById("card-primario");
     let aux = primario.getAttribute('src');
@@ -12,32 +102,7 @@ function MudarCard(element) {
     primario.src = aux2;
 }
 
-// carrousel imagens
-
-const dataImage = [];
-let strBAIXO = "";
-
-for (let i = 0; i < 4; i++) {
-    dataImage[i] = "#";
-}
-
-const cima = document.querySelector(".cima");
-const baixo = document.querySelector(".baixo");
-
-cima.innerHTML = `<img src="${dataImage[0]}" width="100%" height="400px" id="card-primario">`
-
-for (let i = 1; i <= 3; i++) {
-    strBAIXO += `
-    <div class="card">
-        <img src="${dataImage[i]}" width="100%" height="100px" onclick="MudarCard(this)">
-    </div>
-    `
-}
-
-baixo.innerHTML = strBAIXO;
-
 // Criação dos comentários
-
 
 const inserir_comentarios = document.querySelector(".container-forum");
 
