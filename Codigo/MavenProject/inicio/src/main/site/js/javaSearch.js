@@ -4,9 +4,10 @@ controlaJogos(resp);
 
 
 async function controlaJogos(mandar) {
+
     mandar = await receberJogos();
     console.log(mandar);
-    let resp = {};
+    let resp = [];
     for (let i = 0; i < mandar.length; i++) {
         resp[i] = {
             appid: mandar[i].appid,
@@ -21,9 +22,10 @@ async function controlaJogos(mandar) {
     const divJOGOS = document.querySelector('.listgames');
     let gameSTR = "";
 
-    let aux = 300;
+    let aux = resp.length;
+    let indiceAux = [150, 300, 450, 600];
 
-    for (let i = 0; i < 300 / 2; i++) {
+    for (let i = 0; i < indiceAux[0]; i++) {
         gameSTR +=
             `    
     <a href="GamePage.html?appid=${resp[i].appid}" class="game">
@@ -44,19 +46,17 @@ async function controlaJogos(mandar) {
     // Mostrar mais produtos na loja
 
     const showMORE = document.querySelector('.abrir-1');
+    let j = 0;
 
     showMORE.addEventListener("click", () => {
 
-        if (aux > 10) {
+        divJOGOS.innerHTML = "";
 
-            aux -= 10;
-
-            divJOGOS.innerHTML = "";
-
-            for (let i = 300 / 2; i < 300; i++) {
-                gameSTR +=
-                    `
-                <div class = "game">
+        for (let i = indiceAux[j++]; i < indiceAux[j]; i++) {
+            gameSTR +=
+                `
+                <a href="GamePage.html?appid=${resp[i].appid}" class="game">
+                <div class = "game_">
                     <div class="imagem">
                         <img src="${resp[i].json[resp[i].steamappid].data.header_image}" width="100%" height="150">
                     </div>
@@ -64,89 +64,75 @@ async function controlaJogos(mandar) {
                         <h5>${resp[i].nome}</h5>
                     </div>
                 </div>
+            </a>
             `
+            if (j > 4) {
+                j = 0;
             }
-
-            divJOGOS.innerHTML = gameSTR;
         }
+
+        divJOGOS.innerHTML = gameSTR;
 
     })
 
     // Adquirir os dados do input para realizar a pesquisa de produtos
 
     const botao = document.querySelector('.botao');
-    let vetorPesquisa = [];
-    let pesquisaSTR = "";
-
+    
     botao.addEventListener("click", () => {
-
-        // const inputUM = document.querySelector('.teste').value;
-        // const inputUM = document.querySelector('.teste').value;
-        // const inputUM = document.querySelector('.teste').value;
-        // const inputUM = document.querySelector('.teste').value;
-
-        // pega os valores, pede pro banco de dados
-
-        for (let i = 0; i < 20; i++) {
-            vetorPesquisa[i] = {
-                imgsrc: "",
-                nome: `Nome: ${i}`,
-                new: "Algo mais",
-            };
-        }
-
-        for (let i = 0; i < vetorPesquisa.length / 2; i++) {
-            pesquisaSTR +=
-                `
-        <div class = "game">
-            <div class="imagem">
-                <img src="${vetorPesquisa[i].imgsrc}" width="100%" height="150">
-            </div>
-            <div class="descricao">
-                <h5>${vetorPesquisa[i].nome}</h5>
-                <h6>${vetorPesquisa[i].new}</h6>
-            </div>
-        </div>
-        `
-        }
-
+        
+        let pesquisaSTR = "";    
+        let input_nome = document.querySelector(".barrapesquisa input").value;
+        let input_genero = document.querySelector(".genders").value;
         divJOGOS.innerHTML = "";
-        divJOGOS.innerHTML = pesquisaSTR;
+        showMORE.style.display = "none";
 
-        showMORE.classList.replace("abrir-1", "abrir-2");
-
-    })
-
-    // Mostrar mais produtos filtrados
-    let aux2 = vetorPesquisa.length;
-
-    const showMORE2 = document.querySelector('.abrir-2');
-
-    showMORE2.addEventListener("click", () => {
-
-        if (aux2 > 10) {
-
-            aux2 -= 10;
-
-            divJOGOS.innerHTML = "";
-
-            for (let i = vetorPesquisa.length / 2; i < vetorPesquisa.length; i++) {
-                pesquisaSTR +=
-                    `
-                <div class = "game">
+        if(input_nome === ""){
+            for (let i = 0; i < indiceAux[0]; i++) {
+                pesquisaSTR+= 
+                `
+                <a href="GamePage.html?appid=${resp[i].appid}" class="game">
+                <div class = "game_">
                     <div class="imagem">
-                        <img src="${vetorPesquisa[i].imgsrc}" width="100%" height="150">
+                        <img src="${resp[i].json[resp[i].steamappid].data.header_image}" width="100%" height="150">
                     </div>
                     <div class="descricao">
-                        <h5>${vetorPesquisa[i].nome}</h5>
-                        <h6>${vetorPesquisa[i].new}</h6>
+                        <h5>${resp[i].nome}</h5>
                     </div>
                 </div>
-            `
+            </a>
+                `
             }
-
+            showMORE.style.display = "flex";
             divJOGOS.innerHTML = pesquisaSTR;
+
+            return;
         }
+
+        input_nome = input_nome.toUpperCase();
+        
+        for (let i = 0; i < resp.length; i++) {
+            
+            let nome = resp[i].nome;
+            nome = nome.toUpperCase();
+            if (nome.indexOf(input_nome) > -1) {
+                pesquisaSTR +=
+                    `
+                    <a href="GamePage.html?appid=${resp[i].appid}" class="game">
+                    <div class = "game_">
+                        <div class="imagem">
+                            <img src="${resp[i].json[resp[i].steamappid].data.header_image}" width="100%" height="150">
+                        </div>
+                        <div class="descricao">
+                            <h5>${resp[i].nome}</h5>
+                        </div>
+                    </div>
+                </a>
+                `
+            }
+        }
+        
+        divJOGOS.innerHTML += pesquisaSTR;
 
     })
 

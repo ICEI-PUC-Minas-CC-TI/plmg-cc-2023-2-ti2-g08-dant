@@ -34,16 +34,24 @@ async function controlaJogos(mandar) {
     console.log(pageTAM);
 
     const blocosDIV = document.getElementById('container-classificacao');
-    const vetorClasse = [];
+    let vetorClasse = [];
     let blocoSTR = "";
     const auxCat = 3;
 
-    for (let i = 0; i < auxCat; i++) {
-        vetorClasse[i] = {
-            href: `#carrosel-${i}`,
-            categoria: `Categoria: ${i}`
-        }
+    vetorClasse = [
+    {
+        href: `#carrosel-1`,
+        categoria: `Estratégia`,
+    },
+    {
+        href: `#carrosel-2`,
+        categoria: `Aventura`,
+    },
+    {
+        href: `#carrosel-3`,
+        categoria: `Simulação`,
     }
+    ]
 
     for (let i = 0; i < auxCat; i++) {
         blocoSTR +=
@@ -92,13 +100,13 @@ async function controlaJogos(mandar) {
         const jogos_1 = document.getElementById('jogos-1');
         const jogos_2 = document.getElementById('jogos-2');
         aux = "";
-        aux = criarJogos(resp, 0, 30);
+        aux = criarJogos(resp, 10, 150);
         jogos_0.innerHTML = aux;
         aux = "";
-        aux = criarJogos(resp, 31, 50);
+        aux = criarJogos(resp, 160, 300);
         jogos_1.innerHTML = aux;
         aux = "";
-        aux = criarJogos(resp, 80, 120 );
+        aux = criarJogos(resp, 310, 450 );
         jogos_2.innerHTML = aux;
         aux = "";
     }

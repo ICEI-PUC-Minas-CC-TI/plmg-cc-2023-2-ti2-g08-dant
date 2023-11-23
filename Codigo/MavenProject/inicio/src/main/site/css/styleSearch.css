@@ -44,6 +44,20 @@
     justify-content: center;
 }
 
+.filtragem .filtros select {
+    width: 200px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 15px;
+    background-color: var(--cinza-claro);
+    transition: .3s;
+}
+
+.filtragem .filtros select:hover{
+    background-color: var(--color2);
+}
+
 .botao{
     text-align: center;
     margin: auto;
