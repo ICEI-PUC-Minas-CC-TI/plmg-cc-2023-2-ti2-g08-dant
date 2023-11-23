@@ -7,8 +7,8 @@ let teste;
 dadosJogo(teste);
 
 async function dadosJogo(mandar) {
+
     mandar = await receberJogo(appid);
-    console.log(mandar);
     let resp = {};
     resp = {
         appid: mandar.appid,
@@ -16,8 +16,6 @@ async function dadosJogo(mandar) {
         steamappid: retornaId(mandar.json),
         json: JSON.parse(mandar.json),
     }
-
-    console.log(resp);
 
     const nomeDoGame = document.querySelector(".container-esq .texto");
     let nomeSTR = `<h1>${resp.nome}</h1>`
@@ -51,6 +49,11 @@ async function dadosJogo(mandar) {
     }
 
     baixo.innerHTML = strBAIXO;
+
+    let testando = receberForum(resp.steamappid);
+    console.log(testando);
+    console.log(resp.appid);
+
 
     return resp;
 }
@@ -91,7 +94,6 @@ async function receberJogo(id) {
         console.log(error);
     }
 }
-
 
 function MudarCard(element) {
     let primario = document.getElementById("card-primario");
@@ -188,6 +190,26 @@ function criarSubComentario(containerIndex, subComentarios) {
     }
 
     return str;
+}
+
+async function receberForum(id) {
+    const url = `http://localhost:4567/ForumPage?id=${id}`;
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            throw new Error("Deu pau GET");
+        }
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 
