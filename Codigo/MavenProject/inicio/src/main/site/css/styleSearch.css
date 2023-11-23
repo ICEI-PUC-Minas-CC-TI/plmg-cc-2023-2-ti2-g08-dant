@@ -22,6 +22,11 @@
 
 .filtragem input:hover{
     background-color: var(--color2);
+    transform: translateY(-5%);
+}
+
+.filtragem input:hover ~ i{
+    color: var(--color2);
 }
 
 .filtragem .barrapesquisa{
@@ -35,6 +40,10 @@
 .filtragem .barrapesquisa input {
     height: 50px;
     width: 250px;
+}
+
+.filtragem .barrapesquisa i{
+    color: var(--cinza-claro);
 }
 
 .filtragem .filtros{
@@ -56,6 +65,7 @@
 
 .filtragem .filtros select:hover{
     background-color: var(--color2);
+    transform: translateY(-5%);
 }
 
 .botao{

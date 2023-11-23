@@ -29,6 +29,19 @@ async function dadosJogo(mandar) {
 
     cima.innerHTML = `<img src="${resp.json[resp.steamappid].data.header_image}" width="100%" height="400px" id="card-primario">`
 
+    const container_direita = document.querySelector(".container-dir");
+
+    let DireitaStr = `
+    <div class="descricao">
+        <h3>${resp.json[resp.steamappid].data.about_the_game}</h3>
+    </div>
+    `
+    container_direita.innerHTML = DireitaStr;
+
+    const container_baixo = document.querySelector(".container-baixo");
+
+    container_baixo.innerHTML = `<h3>${resp.json[resp.steamappid].data.pc_requirements.minimum}</h3>`
+
     for (let i = 0; i < 3; i++) {
         strBAIXO += `
     <div class="card">
@@ -38,16 +51,6 @@ async function dadosJogo(mandar) {
     }
 
     baixo.innerHTML = strBAIXO;
-
-    const container_direita = document.querySelector(".container-dir");
-
-    let DireitaStr = `
-    <div class="descricao">
-        <h3>${resp.json[resp.steamappid].data.detailed_description}</h3>
-    </div>
-    `
-
-    container_direita.innerHTML = DireitaStr;
 
     return resp;
 }

@@ -55,7 +55,7 @@ let strHEADER = `
     </div>
     <div class="esquerda">
         <div class="imagem">
-            <a href="#">
+            <a href="HomePage.html">
                 <img src="content/dant1.png" alt="" width="60%" height="100%">
             </a>
         </div>
