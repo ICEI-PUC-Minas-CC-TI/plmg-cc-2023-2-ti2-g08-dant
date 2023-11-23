@@ -4,6 +4,7 @@ import spark.Request;
 import spark.Response;
 import Estruturas.DAOStruct.ForumDAO;
 import Estruturas.DAOStruct.PostDAO;
+import Estruturas.Objetos.Forum;
 
 import com.google.gson.Gson;
 
@@ -14,8 +15,9 @@ public class ForumService {
 
     public String getForumById(Request req, Response res) throws Exception {
         int id = Integer.parseInt(req.queryParams("id"));
+        Forum forumVar = forum.getForumByGameID(id);
 
-        return gson.toJson((forum.getForumByGameID(id)) + "/" + post.GetPostsBy(id, 0, 0));
+        return gson.toJson((forumVar) + "/" + post.GetPostsBy(forumVar.getId(), 0, 0));
     }
 
     public Boolean newForum(Request req, Response res) {
