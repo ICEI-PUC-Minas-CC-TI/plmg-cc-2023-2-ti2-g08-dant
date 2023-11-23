@@ -45,9 +45,6 @@ async function dadosJogo(mandar) {
     <div class="descricao">
         <h3>${resp.json[resp.steamappid].data.detailed_description}</h3>
     </div>
-    <div class="preco">
-        <h5>Preco ${resp.json[resp.steamappid].data.price_overview.final_formatted}</h5>
-    </div>
     `
 
     container_direita.innerHTML = DireitaStr;
