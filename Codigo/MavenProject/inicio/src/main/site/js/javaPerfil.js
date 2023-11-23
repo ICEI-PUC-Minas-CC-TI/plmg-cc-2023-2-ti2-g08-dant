@@ -41,7 +41,6 @@ function updateImageDisplay() {
   }
 }
 
-// https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types
 const fileTypes = [
   "image/apng",
   "image/bmp",
@@ -232,16 +231,6 @@ async function getUsuario(appid) {
 
 async function atualizaUsuario(nome, email, senha, nasc, id) {
 
-  // let headersList = {
-  //   "Accept": "*/*",
-  //  }
-   
-  //  let response = await fetch(`http://localhost:4567/UserPage/update?nome=${nome}&email=${email}&senha=${senha}&nasc=${nasc}&id=${id}`, { 
-  //    method: "PUT",
-  //    headers: headersList
-  //  });
-   
-  //  return response;
   const url = `http://localhost:4567/UserPage/update?nome=${nome}&email=${email}&senha=${senha}&nasc=${nasc}&id=${id}`;
 
   try {
