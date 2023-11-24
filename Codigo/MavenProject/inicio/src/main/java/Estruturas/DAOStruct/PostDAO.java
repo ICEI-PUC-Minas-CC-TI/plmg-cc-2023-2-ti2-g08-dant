@@ -8,7 +8,7 @@ import Estruturas.Objetos.Post;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.sql.Statement;
 public class PostDAO extends DAO {
 
     public PostDAO() {
@@ -17,25 +17,34 @@ public class PostDAO extends DAO {
 
     // as colunas em post se chamam id,postagem,forumID,UserID,categoria
 
-    public boolean InserirPostagem(String postagem, int forumID, int UserID, int categoria) {
-        if(categoria > 3 && categoria < 1){ return false;}
-        
-        String sql = "INSERT INTO posts (postagem,forum_id,User_id,categoria_id) VALUES (?,?,?,?)";
-        try {
-            PreparedStatement preparedStatement = conexao.prepareStatement(sql);
-            
-            preparedStatement.setString(1, postagem);
-            preparedStatement.setInt(2, forumID);
-            preparedStatement.setInt(3, UserID);
-            preparedStatement.setInt(4, categoria);
-            preparedStatement.executeUpdate();
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-
+   public int InserirPostagem(String postagem, int forumID, int userID, int categoria) {
+    if (categoria < 1 || categoria > 3) {
+        return 0;
     }
+
+    String sql = "INSERT INTO posts (postagem, forum_id, user_id, categoria_id) VALUES (?, ?, ?, ?)";
+    try {
+        // Informe ao PreparedStatement que você deseja obter as chaves geradas
+        PreparedStatement preparedStatement = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        preparedStatement.setString(1, postagem);
+        preparedStatement.setInt(2, forumID);
+        preparedStatement.setInt(3, userID);
+        preparedStatement.setInt(4, categoria);
+        preparedStatement.executeUpdate();
+
+        // Obtenha as chaves geradas
+        ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+        if (generatedKeys.next()) {
+            int novoID = generatedKeys.getInt(1);
+            return novoID;
+        } else {
+            throw new SQLException("Falha ao obter o ID gerado.");
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return 0;
+    }
+}
 
     public boolean DeletePostById(int id) // id do post
     {

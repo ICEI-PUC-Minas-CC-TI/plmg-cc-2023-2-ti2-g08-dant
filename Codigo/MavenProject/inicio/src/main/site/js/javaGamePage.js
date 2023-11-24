@@ -49,11 +49,142 @@ async function dadosJogo(mandar) {
     }
 
     baixo.innerHTML = strBAIXO;
+    let testando = await receberForum(resp.appid);
+    let varTipoDeEspaço = 3;
+    const tipos_botoes = document.querySelectorAll(".navegador-forum .button");
 
-    let testando = receberForum(resp.steamappid);
-    console.log(testando);
-    console.log(resp.appid);
+    tipos_botoes.forEach(element => {
+        element.addEventListener("click", () => {
+            let numero = parseInt(element.classList[1]);
+            varTipoDeEspaço = numero;
+            final(numero);
+        })
+    })
 
+    const enviarmensagem = document.querySelector(".label label input");
+    enviarmensagem.addEventListener("click", async ()=> {
+        let postagem = document.querySelector(".label label textarea").value;
+        let usuarioId = localStorage.getItem("appid");
+        console.log(usuarioId);
+        let data = await mandarForum(postagem, resp.appid, usuarioId, varTipoDeEspaço);
+        if (data >= 0) {
+            alert("Salvo com sucesso");
+            localStorage.setItem("forumDeleta", data); 
+        } else {
+            alert("Tente Novamente");
+        }
+    })
+
+    // abrir e fechar comentários
+
+    const rosto = document.querySelector(".forum");
+    const seta = document.querySelector(".container-seu-comentario");
+    let contador = 0;
+
+    rosto.addEventListener("click", () => {
+
+        const game = document.querySelector(".container-dados");
+        const forum = document.querySelector(".container-tudo-forum");
+
+        if (contador == 0) {
+            game.style.display = "none";
+            forum.style.display = "block";
+            seta.style.display = "block";
+            contador++;
+        }
+        else {
+            game.style.display = "block";
+            forum.style.display = "none";
+            seta.style.display = "none";
+            contador--;
+        }
+
+    });
+
+    // abrir e fechar os subcomentarios
+
+    const respostas = document.querySelectorAll(".respostas h6");
+
+    respostas.forEach(resp => {
+        resp.addEventListener("click", () => {
+            const numero = resp.classList[0];
+            const campo_preencher = document.querySelector(`.campo_preencher.number-${numero}`);
+
+            if (resp.classList.contains("open")) {
+                resp.classList.remove("open");
+                campo_preencher.style.display = "none";
+            } else {
+                resp.classList.add("open");
+                campo_preencher.style.display = "block";
+            }
+        });
+    });
+
+
+    function final(numero) {
+
+        const totalContainers = testando.length;
+        let contador_Tipos = 0;
+        let novoVet = [];
+
+        for (let i = 0, j = 0; i < totalContainers; i++) {
+            if (testando[i].categoriaID === numero) {
+                novoVet[j++] = testando[i].postagem;
+                contador_Tipos++;
+            }
+        }
+
+        let str = "";
+        str = criarContainer(contador_Tipos);
+        const inserir_comentarios = document.querySelector(".container-forum");
+        inserir_comentarios.innerHTML = str;
+
+        for (let i = 0; i < contador_Tipos; i++) {
+
+            str = criarComentario(i, novoVet);
+            const container = document.querySelector(`.container-comentarios.number-${i}`);
+            container.innerHTML = str;
+
+        }
+    }
+
+    function criarContainer(number) {
+        let insere = "";
+        for (let i = 0; i < number; i++) {
+            insere += `
+            <div class="container-comentarios number-${i}"></div>`;
+        }
+        return insere;
+    }
+
+    function criarComentario(i, novo) {
+        let str = "";
+        str += `
+        <div class="comment">
+            <div class="imagem-perfil">
+                <i class="fa-solid fa-user fa-2xl"></i>
+            </div>
+            <div class="descricao-comment">
+                <div class="texto">
+                    <p>${novo[i]}</p>
+                </div>
+                <div class="respostas">
+                    <h6 class="number-${i}">responder</h6>
+                    <div class="abrir number-${i}">
+                        <i class="fa-solid fa-plus fa-xl"></i>
+                    </div>
+                </div>
+                <div class="campo_preencher number-${i}">
+                    <label>
+                        <textarea style="resize: none;">Insira seu comentário</textarea>
+                        <input type="submit">
+                    </label>
+                </div>
+            </div>
+        </div>`;
+
+        return str;
+    }
 
     return resp;
 }
@@ -104,94 +235,6 @@ function MudarCard(element) {
     primario.src = aux2;
 }
 
-// Criação dos comentários
-
-const inserir_comentarios = document.querySelector(".container-forum");
-
-final();
-
-function final() {
-    const totalContainers = 15;
-    const subComentarios = 3;
-    let str = "";
-    str = criarContainer(totalContainers);
-    inserir_comentarios.innerHTML = str;
-
-    for (let i = totalContainers - 1; i >= 0; i--) {
-        str = criarComentario(i, subComentarios);
-        const container = document.querySelector(`.container-comentarios.number-${i}`);
-        container.innerHTML = str;
-    }
-}
-
-function criarContainer(number) {
-    let insere = "";
-    for (let i = 0; i < number; i++) {
-        insere += `
-        <div class="container-comentarios number-${i}"></div>`;
-    }
-    return insere;
-}
-
-function criarComentario(i, subComentarios) {
-    let str = "";
-    str += `
-    <div class="comment">
-        <div class="imagem-perfil">
-            <i class="fa-solid fa-user fa-2xl"></i>
-        </div>
-        <div class="descricao-comment">
-            <div class="texto">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, corrupti. Quae voluptates veniam tenetur quo aliquid alias! Quam est exercitationem debitis aliquam, repudiandae perferendis quidem, voluptas dolore vel dolores natus?</p>
-            </div>
-            <div class="respostas">
-                <h6 class="number-${i}">responder</h6>
-                <div class="abrir number-${i}">
-                    <i class="fa-solid fa-plus fa-xl"></i>
-                </div>
-            </div>
-            <div class="campo_preencher number-${i}">
-                <label>
-                    <textarea style="resize: none;">Insira seu comentário</textarea>
-                    <input type="submit">
-                </label>
-            </div>
-        </div>
-    </div>`;
-
-    str += criarSubComentario(i, subComentarios);
-    return str;
-}
-
-function criarSubComentario(containerIndex, subComentarios) {
-    let str = "";
-
-    for (let i = 0; i < subComentarios; i++) {
-        str += `
-                    <div class="comment-inside number-${containerIndex}">
-                        <div class="imagem-perfil">
-                            <i class="fa-solid fa-user fa-2xl"></i>
-                        </div>
-                        <div class "descricao-comment">
-                            <div class="texto">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, corrupti. Quae voluptates veniam tenetur quo aliquid alias! Quam est exercitationem debitis aliquam, repudiandae perferendis quidem, voluptas dolore vel dolores natus?</p>
-                            </div>
-                            <div class="respostas">
-                                <h6>responder</h6>
-                            </div>
-                            <div class="campo_preencher">
-                                <label>
-                                    <textarea style="resize: none;">Insira seu comentário</textarea>
-                                    <input type="submit">
-                                </label>
-                            </div>
-                        </div>
-                    </div>`;
-    }
-
-    return str;
-}
-
 async function receberForum(id) {
     const url = `http://localhost:4567/ForumPage?id=${id}`;
     try {
@@ -212,83 +255,22 @@ async function receberForum(id) {
     }
 }
 
-
-// abrir e fechar comentários
-
-const rosto = document.querySelector(".forum");
-const seta = document.querySelector(".container-seu-comentario");
-let contador = 0;
-
-rosto.addEventListener("click", () => {
-
-    const game = document.querySelector(".container-dados");
-    const forum = document.querySelector(".container-tudo-forum");
-
-    if (contador == 0) {
-        game.style.display = "none";
-        forum.style.display = "block";
-        seta.style.display = "block";
-        contador++;
-        comentarios()
+async function mandarForum(postagem, forumid, userid, categoria) {
+    const url = `http://localhost:4567/ForumPage/new?postagem=${postagem}&forumID=${forumid}&userID=${userid}&categoria=${categoria}`;
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            throw new Error("Deu pau POST");
+        }
+    } catch (error) {
+        console.log(error);
     }
-    else {
-        game.style.display = "block";
-        forum.style.display = "none";
-        seta.style.display = "none";
-        contador--;
-    }
-
-});
-
-// abrir e fechar os subcomentarios
-const respotas = document.querySelectorAll(".respostas h6");
-
-respotas.forEach(resp => {
-
-    resp.addEventListener("click", () => {
-
-        if (resp.classList[1] == "open") {
-            resp.classList.remove("open");
-            const campo_preencher = document.querySelectorAll(".campo_preencher");
-            campo_preencher.forEach(element => {
-                element.style.display = "none";
-            });
-        }
-        else {
-            resp.classList.add("open");
-            let string = resp.classList[0];
-            const campo_preencher = document.querySelectorAll(".campo_preencher");
-            campo_preencher.forEach(element => {
-                if (element.classList[1] == string) {
-                    element.style.display = "block";
-                }
-            });
-        }
-    })
-});
-
-// Comentários
-
-const abrir_mais = document.querySelectorAll(".abrir");
-
-abrir_mais.forEach(abrir => {
-    abrir.addEventListener("click", () => {
-        if (abrir.classList[2] == "open") {
-            abrir.classList.remove("open");
-            let comentarios = document.querySelectorAll(".comment-inside");
-            comentarios.forEach(coment => {
-                coment.style.display = "none";
-            });
-        }
-        else {
-            abrir.classList.add("open");
-            let comentarios = document.querySelectorAll(".comment-inside");
-            let string = abrir.classList[1];
-            comentarios.forEach(coment => {
-                if (coment.classList[1] == string) {
-                    coment.style.display = "flex";
-                }
-            });
-        }
-    })
-});
+}

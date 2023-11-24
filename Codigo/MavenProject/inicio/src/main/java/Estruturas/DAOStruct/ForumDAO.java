@@ -28,7 +28,7 @@ public class ForumDAO extends DAO {
     }
 
     public boolean removeForumByID(int gameid) {
-        String sql = "DELETE FROM forum WHERE appid = ?";
+        String sql = "DELETE FROM forum WHERE jogos_appid = ?";
         try {
             PreparedStatement preparedStatement = conexao.prepareStatement(sql);
             preparedStatement.setInt(1, gameid);
@@ -42,15 +42,16 @@ public class ForumDAO extends DAO {
 
     public Forum getForumByGameID(int gameid) {
         Forum forum = null;
-        String sql = "SELECT * FROM forum WHERE appid = ?";
+        String sql = "SELECT * FROM forum WHERE jogos_appid = ?";
         try {
             PreparedStatement preparedStatement = conexao.prepareStatement(sql);
             preparedStatement.setInt(1, gameid);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                int idForum = resultSet.getInt("appid");
+                int GameID = resultSet.getInt("jogos_appid");
                 String nome = resultSet.getString("nome");
-                forum = new Forum(idForum, nome);
+                int ForumID = resultSet.getInt("id");
+                forum = new Forum(GameID, nome,ForumID);
                 return forum;
             } else {
                 return null;
@@ -63,11 +64,11 @@ public class ForumDAO extends DAO {
 
     public LinkedList<Forum> getAllForums() throws Exception { // não to afim de tratar exceção aqui
         LinkedList<Forum> forums = new LinkedList<Forum>();
-        String sql = "SELECT * FROM forum ORDER BY appid";
+        String sql = "SELECT * FROM forum ORDER BY jogos_appid";
         PreparedStatement preparedStatement = conexao.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
-            int idForum = resultSet.getInt("appid");
+            int idForum = resultSet.getInt("jogos_appid");
             String nome = resultSet.getString("nome");
             Forum forum = new Forum(idForum, nome);
             forums.add(forum);

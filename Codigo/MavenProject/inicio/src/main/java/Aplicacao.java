@@ -10,6 +10,7 @@ public class Aplicacao {
         UserService user = new UserService();
         GamesService game = new GamesService();
         ForumService forum = new ForumService();
+        PostService post = new PostService();
 
         // Habilitar o suporte a CORS (Cross-Origin Resource Sharing)
         options("/*", (request, response) -> {
@@ -59,11 +60,11 @@ public class Aplicacao {
             get("", (req, res) -> forum.getForumById(req, res));
             // cadastra forum
             post("/new", (req, res) -> {
-                boolean response = forum.newForum(req, res);
+                int response = post.newPost(req, res);
                 return response;
             });
             // Delete Forum
-            delete("/delete", (req, res) -> forum.deleteForum(req, res));
+            delete("/delete", (req, res) -> post.deletePost(req, res));
         });
         path("/GamePage", () -> {
             get("/game", (req, res) -> game.getGameById(req, res));

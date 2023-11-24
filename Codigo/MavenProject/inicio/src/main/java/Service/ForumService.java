@@ -16,8 +16,8 @@ public class ForumService {
     public String getForumById(Request req, Response res) throws Exception {
         int id = Integer.parseInt(req.queryParams("id"));
         Forum forumVar = forum.getForumByGameID(id);
-
-        return gson.toJson((forumVar) + "/" + post.GetPostsBy(forumVar.getId(), 0, 0));
+        System.out.println(forumVar.getId());
+        return gson.toJson(post.GetPostsBy(forumVar.getId(), 0, 0));
     }
 
     public Boolean newForum(Request req, Response res) {
