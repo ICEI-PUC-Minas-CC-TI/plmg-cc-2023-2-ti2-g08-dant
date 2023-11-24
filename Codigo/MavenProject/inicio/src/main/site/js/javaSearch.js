@@ -1,5 +1,12 @@
 let resp;
 
+let corzinha = localStorage.getItem("premium");
+if (corzinha) {
+  const profile = document.querySelector(".profile");
+  console.log(profile);
+  profile.classList.add("amarelo");
+}
+
 controlaJogos(resp);
 
 

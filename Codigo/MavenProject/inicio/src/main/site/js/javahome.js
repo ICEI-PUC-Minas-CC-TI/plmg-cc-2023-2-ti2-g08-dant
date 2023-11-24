@@ -1,5 +1,15 @@
 let resp;
 
+let corzinha = localStorage.getItem("premium");
+if (corzinha) {
+  const profile = document.querySelector(".profile");
+  console.log(profile);
+  profile.classList.add("amarelo");
+}else{
+    const profile = document.querySelector(".profile");
+    profile.classList.remove("amarelo");
+}
+
 controlaJogos(resp);
 
 async function controlaJogos(mandar) {

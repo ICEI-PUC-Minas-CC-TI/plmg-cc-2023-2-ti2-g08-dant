@@ -53,6 +53,8 @@ public class Aplicacao {
             delete("/delete", (req, res) -> user.deleteUserById(req, res));
             // muda informações de um usuario
             put("/update", (req, res) -> user.update(req, res));
+            // altera o status de assinatura do usuário
+            put("/assinatura", (req, res) -> user.subscribe(req, res));
         });
 
         path("/ForumPage", () -> {

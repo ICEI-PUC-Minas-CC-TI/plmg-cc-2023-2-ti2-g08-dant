@@ -1,6 +1,13 @@
 const input = document.querySelector(".dir input");
 const preview = document.querySelector(".preview");
 
+let corzinha = localStorage.getItem("premium");
+if (corzinha) {
+  const profile = document.querySelector(".profile");
+  console.log(profile);
+  profile.classList.add("amarelo");
+}
+
 input.style.opacity = 0;
 
 input.addEventListener("change", updateImageDisplay);
@@ -73,6 +80,7 @@ user(appid);
 
 async function user (appid){
   let userData = await getUsuario(appid);
+  localStorage.setItem("premium", userData.assinatura);
   insereDados(userData);
 }
 
@@ -183,6 +191,37 @@ nao_quero.addEventListener("click", () => {
   salvarei.style.display = "none";
 })
 
+const premium = document.querySelector(".premium");
+const desejo = document.querySelector(".desejo");
+const nao_desejo = document.querySelector(".nao_desejo");
+
+premium.addEventListener("click", async () =>{
+  const premiumei = document.querySelector(".assinar_premium");
+  premiumei.style.display = "block";
+});
+
+desejo.addEventListener("click", async () => {
+  
+  let retorno = await atualizarPremium(appid);
+
+  if (retorno === true) {
+    alert("Salvado com sucesso");
+    localStorage.setItem("premium", true);
+    const premiumei = document.querySelector(".assinar_premium");
+    premiumei.style.display = "none";
+  }
+  else{
+    alert("Erro: tente novamente");
+    const premiumei = document.querySelector(".assinar_premium");
+    premiumei.style.display = "none";
+  }
+})
+
+nao_desejo.addEventListener("click", () => {
+  const premiumei = document.querySelector(".assinar_premium");
+  premiumei.style.display = "none";
+})
+
 async function deletarUsuario(appid) {
 
   const url = `http://localhost:4567/UserPage/delete?id=${appid}`;
@@ -232,6 +271,30 @@ async function getUsuario(appid) {
 async function atualizaUsuario(nome, email, senha, nasc, id) {
 
   const url = `http://localhost:4567/UserPage/update?nome=${nome}&email=${email}&senha=${senha}&nasc=${nasc}&id=${id}`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        "Accept": "*/*"
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error('Erro na solicitação PUT.');
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function atualizarPremium(id) {
+
+  const url = `http://localhost:4567/UserPage/assinatura?id=${id}`;
 
   try {
     const response = await fetch(url, {

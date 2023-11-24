@@ -130,6 +130,14 @@ chat-bot i{
     padding: 25px;
 }
 
+.container-navegar .direita .profile.amarelo{
+    background-color: var(--amarelo);
+}
+
+.container-navegar .direita .profile.amarelo i{
+    color: var(--cinza-carvão);
+}
+
 .container-navegar .direita .profile i{
     cursor: pointer;
     color: var(--color2);

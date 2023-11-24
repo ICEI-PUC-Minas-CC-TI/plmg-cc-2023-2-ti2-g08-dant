@@ -99,4 +99,10 @@ public class UserService {
         }
     }
 
+    public Boolean subscribe (Request req, Response res){
+        int id = Integer.parseInt(req.queryParams("id"));
+        boolean resp = user.updateSubscription(id, true);
+        return resp;
+    }
+
 }// fazer service para deletar usuario

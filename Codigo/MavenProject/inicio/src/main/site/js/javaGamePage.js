@@ -3,6 +3,16 @@ const searchURL = new URLSearchParams(url);
 let appid = searchURL.get('appid');
 appid = parseInt(appid);
 
+let corzinha = localStorage.getItem("premium");
+if (corzinha) {
+  const profile = document.querySelector(".profile");
+  console.log(profile);
+  profile.classList.add("amarelo");
+}else{
+    const profile = document.querySelector(".profile");
+    profile.classList.remove("amarelo");
+}
+
 let teste;
 dadosJogo(teste);
 
