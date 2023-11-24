@@ -30,7 +30,7 @@ async function Confirmar() {
     }
 }
 
-function Cadastrar() {
+async function Cadastrar() {
     
     let email = document.getElementById("email2").value;
     let senha = document.getElementById("senha2").value;
@@ -42,19 +42,14 @@ function Cadastrar() {
     if (email != "" && senha != "" && nome != "" && date != "" && confimasenha != "") {
         if (senha === confimasenha) {
             if (termo.checked) {
-                inserirUsuario(nome, email, senha, formatarData(date))
-                    .then(data => {
-                        console.log(data);
-                        if (!data === true) {
-                            alert("Cadastrado");
-                            window.location.href = "HomePage.html";
-                        } else {
-                            alert("Ocorreu um erro, realize novamente o cadastro");
-                        }
-                    })
-                    .catch(error => {
-                        alert("Erro ao cadastrar: " + error);
-                    });
+                let data = await inserirUsuario(nome, email, senha, formatarData(date))
+                console.log(data)
+                if (!data === true) {
+                    alert("Cadastrado");
+                    window.location.href = "HomePage.html";
+                } else {
+                    alert("Ocorreu um erro, realize novamente o cadastro");
+                }
             } else {
                 alert("Aceite os termos de uso");
             }
