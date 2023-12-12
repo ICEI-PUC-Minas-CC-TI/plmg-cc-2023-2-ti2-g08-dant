@@ -1,31 +1,32 @@
 cff-version: 1.0.1
 message: Please cite this software using these metadata.
-title: 
+title: DANT
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names:
+  - family-names: Oliveira Santos
+    given-names: Arthur 
+  - family-names: Pereira Maia
+    given-names: Diego
+  - family-names: Silverio Nahim
+    given-names: Henrique
+  - family-names: Felipe Lemos
+    given-names: Luis
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Soares Vieira de Vasconcelos
+    given-names: Amália
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Mara Freitas Diniz
+    given-names: Luciana
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: do Val Machado
+    given-names: Max
 keywords:
-  - 
-  - 
-repository-code: 
+  - Vitrine de Jogos
+  - API Steam
+  - CRUD forum
+repository-code: https://github.com/ICEI-PUC-Minas-CC-TI/plmg-cc-2023-2-ti2-g08-dant
 license: CC-BY-4.0
 version: 1.0.0
-date-released: 2022-07-14
+date-released: 2023-12-12
